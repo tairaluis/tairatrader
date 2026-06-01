@@ -223,17 +223,34 @@
   .cta-card .ipt{padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg-1);font-family:'JetBrains Mono';font-size:13px;color:var(--text-3);user-select:none}
   .cta-card .ipt b{color:var(--text-4);margin-right:6px;letter-spacing:.08em;text-transform:uppercase;font-size:10px}
   .cta-card .cc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px;font-family:'JetBrains Mono';font-size:10px;color:var(--text-4);letter-spacing:.06em;text-transform:uppercase}
-  /* Real Kit form inputs (override Kit's default white styling) */
+  /* Real form inputs (override Brevo's default white styling) */
   .cta-card .rf-input{width:100%;padding:13px 14px;border:1px solid var(--line-2);border-radius:8px;background:var(--bg-1);color:var(--text);font-family:'JetBrains Mono';font-size:13.5px;line-height:1.3;transition:border-color .15s ease, box-shadow .15s ease;-webkit-appearance:none;appearance:none}
   .cta-card .rf-input::placeholder{color:var(--text-4)}
   .cta-card .rf-input:focus{outline:none;border-color:var(--accent-line);box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 16%, transparent)}
+  .cta-card .rf-input.entry__field--error,.cta-card .rf-input[aria-invalid="true"]{border-color:var(--neg)}
   .cta-card .rf-submit{width:100%;border:0;cursor:pointer}
-  .cta-card .rf-spinner{display:none;width:14px;height:14px;border-radius:50%;border:2px solid color-mix(in oklab, var(--accent-ink) 35%, transparent);border-top-color:var(--accent-ink);animation:rfspin .7s linear infinite}
-  .cta-card .formkit-submit[data-active] .rf-spinner{display:inline-block}
+  /* ── Brevo structural resets ── */
+  .cta-card .sib-form{background:transparent!important;padding:0!important}
+  .cta-card #sib-form-container,.cta-card #sib-container{background:transparent!important;border:0!important;max-width:none!important;padding:0!important;direction:ltr;text-align:left}
+  .cta-card #sib-form{padding:0!important}
+  .cta-card .sib-input,.cta-card .sib-form-block{padding:0!important;margin:0!important}
+  .cta-card .form__entry,.cta-card .form__label-row,.cta-card .entry__field{margin:0!important;padding:0!important;border:0!important;background:transparent!important}
+  .cta-card .entry__field{display:block!important}
+  .cta-card .entry__label,.cta-card .entry__specification{display:none!important}
+  .cta-card .entry__error{display:block;margin:6px 0 0;padding:0!important;background:transparent!important;border:0!important;color:var(--neg)!important;font-family:'JetBrains Mono'!important;font-size:11.5px!important}
+  .cta-card .entry__error:empty{display:none}
+  /* Brevo message panels → dark theme */
+  .cta-card .sib-form-message-panel{display:none;margin:0 0 12px!important;padding:12px 14px!important;border-radius:8px!important;border-width:1px!important;border-style:solid!important;font-family:'JetBrains Mono'!important;font-size:12.5px!important;max-width:none!important;background:transparent}
+  .cta-card .sib-msg--err{color:#ffb3b3!important;background:color-mix(in oklab, var(--neg) 14%, transparent)!important;border-color:color-mix(in oklab, var(--neg) 40%, transparent)!important}
+  .cta-card .sib-msg--ok{color:var(--pos)!important;background:color-mix(in oklab, var(--pos) 12%, transparent)!important;border-color:color-mix(in oklab, var(--pos) 40%, transparent)!important}
+  .cta-card .sib-form-message-panel__text{display:flex;align-items:flex-start;gap:8px;text-align:left}
+  .cta-card .sib-notification__icon{width:16px;height:16px;flex:0 0 auto;margin-top:1px}
+  /* loader spinner inside button */
+  .cta-card .sib-hide-loader-icon{display:none}
+  .cta-card .sib-form-block__button-with-loader.sib-show-loader .sib-hide-loader-icon{display:inline-block;animation:rfspin .8s linear infinite}
+  .cta-card .sib-form-block__button-with-loader.sib-show-loader span{opacity:.6}
   @keyframes rfspin{to{transform:rotate(360deg)}}
-  .cta-card .formkit-alert{list-style:none;margin:0;padding:0;color:var(--neg);font-family:'JetBrains Mono';font-size:12px}
-  .cta-card .formkit-alert:empty{display:none}
-  .cta-card .formkit-powered-by-convertkit-container{display:none}
+  .cta-card .input--hidden{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
 
   /* ───── Footer ───── */
   footer{padding:48px 0 40px;border-top:1px solid var(--line);margin-top:48px}
@@ -565,21 +582,65 @@
             <span class="label">Formulário de acesso</span>
             <span class="label" style="color:var(--accent)">● live</span>
           </div>
-          <form class="cc-form seva-form formkit-form"
-                action="https://app.kit.com/forms/9510432/subscriptions"
-                method="post"
-                data-sv-form="9510432"
-                data-uid="6a09dc7726"
-                data-format="inline"
-                data-version="5">
-            <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
-            <input class="rf-input" type="text" name="fields[first_name]" aria-label="Nome" placeholder="Seu nome" autocomplete="given-name" />
-            <input class="rf-input" type="email" name="email_address" aria-label="E-mail" placeholder="seu@email.com" autocomplete="email" required />
-            <button class="btn btn-primary rf-submit" type="submit" data-element="submit" style="justify-content:center;margin-top:4px">
-              <span class="rf-spinner" aria-hidden="true"></span>
-              <span>Enviar e receber o script</span>
-            </button>
-          </form>
+
+          <!-- Brevo form -->
+          <div class="sib-form" id="brevo-wrap">
+            <div id="sib-form-container" class="sib-form-container">
+              <div id="error-message" class="sib-form-message-panel sib-msg sib-msg--err">
+                <div class="sib-form-message-panel__text">
+                  <span class="sib-form-message-panel__inner-text">Sua assinatura não pôde ser validada. Verifique os campos e tente novamente.</span>
+                </div>
+              </div>
+              <div id="success-message" class="sib-form-message-panel sib-msg sib-msg--ok">
+                <div class="sib-form-message-panel__text">
+                  <span class="sib-form-message-panel__inner-text">Pronto! Verifique seu e-mail para receber o acesso ao script.</span>
+                </div>
+              </div>
+              <div id="sib-container" class="sib-container--large sib-container--vertical">
+                <form id="sib-form" method="POST" data-type="subscription"
+                      action="https://7d494f40.sibforms.com/serve/MUIFABXSO_pUnJ_HpIB5o6pwBnYptnDA_i3mMfUgzl62W7ti-l_TdoVgQW4HxmlSUiO2NI0a74bEOvhyBHG1-cfXZdDLuibxiQr8zRddcKf5X0wu_DgCiLiaXH6608Oos1AycLzWifVH7aiqq3ov49o6q84ZrIedePsr5L-_jZ5RQcxh4Q5XesZrBkh6HMyMCyFYPS8of97eLrCEKg==">
+                  <div class="cc-form">
+                    <div class="sib-input sib-form-block">
+                      <div class="form__entry entry_block">
+                        <div class="form__label-row">
+                          <div class="entry__field">
+                            <input class="input rf-input" maxlength="200" type="text" id="NOME" name="NOME" autocomplete="off" placeholder="Seu nome" data-required="true" required />
+                          </div>
+                        </div>
+                        <label class="entry__error entry__error--primary"></label>
+                      </div>
+                    </div>
+
+                    <div class="sib-input sib-form-block">
+                      <div class="form__entry entry_block">
+                        <div class="form__label-row">
+                          <div class="entry__field">
+                            <input class="input rf-input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" placeholder="seu@email.com" data-required="true" required />
+                          </div>
+                        </div>
+                        <label class="entry__error entry__error--primary"></label>
+                      </div>
+                    </div>
+
+                    <div class="g-recaptcha-v3" data-sitekey="6Lcg7gctAAAAABXtR1V0rUasa1_exDDatyAjU0E1" style="display:none"></div>
+
+                    <div class="sib-form-block">
+                      <button class="sib-form-block__button sib-form-block__button-with-loader btn btn-primary rf-submit" form="sib-form" type="submit" style="justify-content:center;margin-top:4px">
+                        <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" style="width:15px;height:15px;fill:currentColor">
+                          <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                        </svg>
+                        <span>Enviar e receber o script</span>
+                      </button>
+                    </div>
+
+                    <input type="text" name="email_address_check" value="" class="input--hidden" />
+                    <input type="hidden" name="locale" value="pt" />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
           <div class="cc-foot">
             <span>Você receberá o acesso por e-mail</span>
             <span>Sem spam ↗</span>
@@ -615,8 +676,28 @@
   </div>
 </footer>
 
-<!-- ─────────────────── Kit (ConvertKit) form enhancer ─────────────────── -->
-<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+<!-- ─────────────────── Brevo (Sendinblue) form ─────────────────── -->
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Escolha um código de país';
+  window.LOCALE = 'pt';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "A informação fornecida não é válida. Verifique o formato do campo e tente novamente.";
+  window.REQUIRED_ERROR_MESSAGE = "Este campo não pode ficar em branco.";
+  window.GENERIC_INVALID_MESSAGE = "A informação fornecida não é válida. Verifique o formato do campo e tente novamente.";
+  window.INVALID_NUMBER = "A informação fornecida não é válida. Verifique o formato do campo e tente novamente.";
+  window.INVALID_DATE = "Insira uma data válida";
+  window.REQUIRED_MULTISELECT_MESSAGE = 'Selecione pelo menos 1 opção';
+  window.translation = {
+    common: {
+      selectedList: '{quantity} lista selecionada',
+      selectedLists: '{quantity} listas selecionadas',
+      selectedOption: '{quantity} selecionado',
+      selectedOptions: '{quantity} selecionados',
+    }
+  };
+  var AUTOHIDE = Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Lcg7gctAAAAABXtR1V0rUasa1_exDDatyAjU0E1&hl=pt" async defer></script>
 
 <!-- ─────────────────── Live BTC ticker ─────────────────── -->
 <script>
