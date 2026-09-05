@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luis Taira — Links</title>
+<meta name="description" content="Leitura de mercado de Bitcoin com Ondas de Elliott e NEoWave. Sala BTC, curso O Princípio da Onda e redes sociais.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg:#070A10;
+    --bg-2:#0B111B;
+    --card:#111C2C;
+    --card-2:#14233A;
+    --border:rgba(120,160,210,0.14);
+    --border-strong:rgba(120,170,220,0.28);
+    --text:#EAF1FA;
+    --text-dim:#A7B8CC;
+    --text-mute:#6A7C93;
+    --acc:#21E6E6;
+    --acc-deep:#0FB9C4;
+
+    --f-display:'Sora', sans-serif;
+    --f-body:'Manrope', sans-serif;
+    --f-mono:'JetBrains Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:radial-gradient(120% 80% at 50% -10%, #101c2c 0%, var(--bg) 55%);
+    color:var(--text);
+    font-family:var(--f-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:56px 18px 40px;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  .card{
+    width:100%;
+    max-width:420px;
+  }
+
+  /* ---------- Avatar & intro ---------- */
+  .avatar-wrap{
+    width:104px; height:104px;
+    margin:0 auto 22px;
+    position:relative;
+  }
+  .avatar-ring{
+    position:absolute; inset:-6px;
+    border-radius:50%;
+    background:conic-gradient(from 180deg, var(--acc), var(--acc-deep), transparent 65%, var(--acc));
+    filter:blur(0.3px);
+  }
+  .avatar-wrap img{
+    position:relative;
+    width:104px; height:104px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--bg);
+    box-shadow:0 0 30px rgba(33,230,230,0.25);
+  }
+
+  .name{
+    font-family:var(--f-display);
+    font-weight:700;
+    font-size:22px;
+    text-align:center;
+    margin-bottom:8px;
+  }
+  .bio{
+    text-align:center;
+    color:var(--text-dim);
+    font-size:14.5px;
+    max-width:34ch;
+    margin:0 auto 22px;
+  }
+
+  /* ---------- Socials ---------- */
+  .socials{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-bottom:30px;
+  }
+  .social-btn{
+    width:44px; height:44px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+    color:var(--text);
+    transition:border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+  }
+  .social-btn:hover{
+    border-color:var(--acc);
+    background:rgba(33,230,230,0.08);
+    transform:translateY(-2px);
+  }
+  .social-btn svg{width:20px; height:20px;}
+
+  /* ---------- Links ---------- */
+  .links{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-bottom:36px;
+  }
+  .link-btn{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:18px 20px;
+    background:linear-gradient(180deg, var(--card), var(--card-2));
+    border:1px solid var(--border);
+    border-radius:14px;
+    transition:border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .link-btn:hover{
+    border-color:var(--acc);
+    box-shadow:0 0 30px rgba(33,230,230,0.14);
+    transform:translateY(-2px);
+  }
+  .link-main{ display:flex; flex-direction:column; gap:3px; min-width:0; }
+  .link-title{ font-family:var(--f-display); font-weight:700; font-size:16px; }
+  .link-sub{ font-family:var(--f-mono); font-size:11px; letter-spacing:0.04em; color:var(--text-mute); text-transform:uppercase; }
+  .link-arrow{ color:var(--acc); flex-shrink:0; }
+  .link-arrow svg{ width:18px; height:18px; }
+
+  .link-btn.primary{
+    border-color:var(--border-strong);
+    background:linear-gradient(180deg, rgba(33,230,230,0.09), var(--card-2));
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    text-align:center;
+  }
+  .foot-brand{
+    font-family:var(--f-mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--text-mute);
+  }
+  .foot-brand b{ color:var(--acc); }
+
+  @media (max-width:380px){
+    .name{font-size:20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="avatar-wrap">
+    <div class="avatar-ring"></div>
+    <img src="images/luis-taira.webp" alt="Luis Taira">
+  </div>
+
+  <div class="name">Luis Taira</div>
+  <p class="bio">Leitura de mercado de Bitcoin com Ondas de Elliott e NEoWave. Sem palpite, com estrutura.</p>
+
+  <div class="socials">
+    <a class="social-btn" href="https://instagram.com/luistaira" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a class="social-btn" href="https://wa.me/5567981675727" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 17.5 4 20l2.6-0.7A8 8 0 1 0 4 12a7.96 7.96 0 0 0 1.1 4.1Z"/><path d="M9 9.6c0 3.6 2.8 6.4 6.4 6.4 0.6 0 0.9-0.5 0.9-1v-1.1c0-0.3-0.2-0.5-0.5-0.6l-1.7-0.5c-0.3-0.1-0.5 0-0.7 0.2l-0.4 0.5c-1-0.5-1.8-1.3-2.3-2.3l0.5-0.4c0.2-0.2 0.3-0.4 0.2-0.7l-0.5-1.7c-0.1-0.3-0.3-0.5-0.6-0.5H9.9c-0.5 0-0.9 0.4-0.9 0.9Z"/></svg>
+    </a>
+    <a class="social-btn" href="https://youtube.com/@luistaira" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.3v5.4l4.8-2.7-4.8-2.7Z" fill="currentColor" stroke="none"/></svg>
+    </a>
+  </div>
+
+  <div class="links">
+    <a class="link-btn primary" href="https://luistaira.com/sala-btc">
+      <div class="link-main">
+        <span class="link-title">Sala BTC</span>
+        <span class="link-sub">Leitura de mercado · R$97/mês</span>
+      </div>
+      <span class="link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+    </a>
+
+    <a class="link-btn" href="https://luistaira.com/principio-da-onda">
+      <div class="link-main">
+        <span class="link-title">O Princípio da Onda</span>
+        <span class="link-sub">Curso · Ondas de Elliott + NEoWave</span>
+      </div>
+      <span class="link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="foot-brand">LUIS<b>TAIRA</b> · luistaira.com</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
