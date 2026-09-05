@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luis Taira — Ondas de Elliott, NEoWave e leitura de mercado de Bitcoin</title>
+<meta name="description" content="Luis Taira: leitura de mercado de Bitcoin com Ondas de Elliott e NEoWave. Conheça a Sala BTC e o curso O Princípio da Onda.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg:#070A10;
+    --bg-2:#0B111B;
+    --bg-3:#0F1826;
+    --card:#111C2C;
+    --card-2:#14233A;
+    --border:rgba(120,160,210,0.14);
+    --border-strong:rgba(120,170,220,0.28);
+    --text:#EAF1FA;
+    --text-dim:#A7B8CC;
+    --text-mute:#6A7C93;
+    --acc:#21E6E6;
+    --acc-deep:#0FB9C4;
+    --down:#FF5C7A;
+
+    --f-display:'Sora', sans-serif;
+    --f-body:'Manrope', sans-serif;
+    --f-mono:'JetBrains Mono', monospace;
+    --maxw:1040px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--f-body);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  .eyebrow{
+    font-family:var(--f-mono);
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--acc);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
+    font-weight:600;
+  }
+  .eyebrow::before{
+    content:"";
+    width:20px; height:1px;
+    background:var(--acc);
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    border-bottom:1px solid var(--border);
+    padding:22px 0;
+  }
+  header .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .brand{ font-family:var(--f-display); font-weight:800; font-size:18px; letter-spacing:0.01em; }
+  .brand .accent{ color:var(--acc); }
+  .nav-social{ display:flex; gap:12px; }
+  .nav-social a{
+    width:34px; height:34px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--border); color:var(--text-dim);
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .nav-social a:hover{ border-color:var(--acc); color:var(--acc); }
+  .nav-social svg{ width:16px; height:16px; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:76px 0 64px; }
+  .hero h1{
+    font-family:var(--f-display);
+    font-weight:800;
+    font-size:clamp(32px, 5.2vw, 50px);
+    line-height:1.1;
+    letter-spacing:-0.01em;
+    max-width:16ch;
+    margin-bottom:22px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--acc); }
+  .hero .lead{
+    font-size:17.5px;
+    color:var(--text-dim);
+    max-width:52ch;
+    margin-bottom:32px;
+  }
+  .hero-cta{ display:flex; flex-wrap:wrap; gap:14px; }
+  .btn{
+    font-family:var(--f-display);
+    font-weight:700;
+    font-size:15px;
+    padding:15px 26px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--acc), var(--acc-deep));
+    color:#04141a;
+    box-shadow:0 0 26px rgba(33,230,230,0.3);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 0 38px rgba(33,230,230,0.5); }
+  .btn-ghost{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border-strong);
+    color:var(--text);
+  }
+  .btn-ghost:hover{ background:rgba(255,255,255,0.07); border-color:var(--acc); }
+
+  section{ padding:64px 0; border-top:1px solid var(--border); }
+  h2{ font-family:var(--f-display); font-weight:700; font-size:clamp(24px,3.4vw,32px); margin-bottom:14px; }
+  .section-lead{ color:var(--text-dim); max-width:56ch; margin-bottom:40px; }
+
+  /* ---------- Sobre ---------- */
+  .about{ display:grid; grid-template-columns:1fr; gap:36px; align-items:center; }
+  @media(min-width:760px){ .about{ grid-template-columns:220px 1fr; } }
+  .about-photo{
+    width:180px; height:180px;
+    border-radius:50%;
+    overflow:hidden;
+    border:3px solid var(--bg);
+    box-shadow:0 0 40px rgba(33,230,230,0.22);
+    margin:0 auto;
+    position:relative;
+  }
+  .about-photo img{ width:100%; height:100%; object-fit:cover; }
+  .about-text p{ color:var(--text-dim); margin-bottom:14px; max-width:60ch; }
+  .about-text p strong{ color:var(--text); font-weight:600; }
+  .about-text p:last-child{ margin-bottom:0; }
+
+  /* ---------- Produtos ---------- */
+  .products{ display:grid; grid-template-columns:1fr; gap:22px; }
+  @media(min-width:720px){ .products{ grid-template-columns:1fr 1fr; } }
+  .product-card{
+    background:linear-gradient(180deg, var(--card), var(--bg-3));
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:30px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .product-card.primary{ border-color:var(--border-strong); box-shadow:0 0 50px rgba(33,230,230,0.10); }
+  .product-tag{
+    font-family:var(--f-mono);
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--acc);
+    display:inline-block;
+  }
+  .product-tag.alt{ color:var(--text-mute); }
+  .product-card h3{ font-family:var(--f-display); font-weight:700; font-size:22px; }
+  .product-card p{ color:var(--text-dim); font-size:14.5px; }
+  .product-card .price{ font-family:var(--f-mono); font-size:13px; color:var(--text-mute); }
+  .product-card .btn{ align-self:flex-start; margin-top:6px; }
+  .affiliate-note{
+    font-size:12.5px;
+    color:var(--text-mute);
+    border-top:1px solid var(--border);
+    padding-top:12px;
+    margin-top:2px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{ padding:44px 0 60px; border-top:1px solid var(--border); }
+  footer .wrap{ display:flex; flex-direction:column; align-items:center; gap:18px; text-align:center; }
+  .foot-links{ display:flex; gap:22px; flex-wrap:wrap; justify-content:center; font-size:14px; color:var(--text-dim); }
+  .foot-links a:hover{ color:var(--acc); }
+  .foot-social{ display:flex; gap:14px; }
+  .foot-social a{
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--border); color:var(--text-dim);
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .foot-social a:hover{ border-color:var(--acc); color:var(--acc); }
+  .foot-social svg{ width:17px; height:17px; }
+  .foot-fine{ font-family:var(--f-mono); font-size:11px; color:var(--text-mute); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">LUIS<span class="accent">TAIRA</span></div>
+    <div class="nav-social">
+      <a href="https://instagram.com/luistaira" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://wa.me/5567981675727" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 17.5 4 20l2.6-0.7A8 8 0 1 0 4 12a7.96 7.96 0 0 0 1.1 4.1Z"/><path d="M9 9.6c0 3.6 2.8 6.4 6.4 6.4 0.6 0 0.9-0.5 0.9-1v-1.1c0-0.3-0.2-0.5-0.5-0.6l-1.7-0.5c-0.3-0.1-0.5 0-0.7 0.2l-0.4 0.5c-1-0.5-1.8-1.3-2.3-2.3l0.5-0.4c0.2-0.2 0.3-0.4 0.2-0.7l-0.5-1.7c-0.1-0.3-0.3-0.5-0.6-0.5H9.9c-0.5 0-0.9 0.4-0.9 0.9Z"/></svg>
+      </a>
+      <a href="https://youtube.com/@luistaira" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.3v5.4l4.8-2.7-4.8-2.7Z" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" style="border-top:none;">
+  <div class="wrap">
+    <div class="eyebrow">Análise técnica · Bitcoin</div>
+    <h1>O mercado se move em <em>ondas</em>. Eu leio esse padrão.</h1>
+    <p class="lead">Sou trader de Bitcoin e uso as Ondas de Elliott — hoje aprofundadas pela abordagem NEoWave — pra entender onde o preço está dentro de um ciclo maior, em vez de operar no escuro.</p>
+    <div class="hero-cta">
+      <a href="https://luistaira.com/sala-btc" class="btn btn-primary">Conhecer a Sala BTC</a>
+      <a href="#sobre" class="btn btn-ghost">Sobre mim</a>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="about">
+      <div class="about-photo">
+        <img src="images/luis-taira.webp" alt="Luis Taira">
+      </div>
+      <div class="about-text">
+        <span class="eyebrow">Quem escreve aqui</span>
+        <p><strong>Sou servidor público</strong> e estudo o mercado de Bitcoin há anos usando um método chamado Ondas de Elliott — hoje aprofundado pela abordagem NeoWave, que organiza o gráfico numa sequência lógica de movimentos.</p>
+        <p>Isso não é palpite. É leitura de padrão — a mesma lógica usada por analistas de mercado, só que traduzida pra quem nunca abriu um gráfico na vida.</p>
+        <p>Hoje compartilho minhas leituras de mercado na <strong>Sala BTC</strong> e, à parte, indico o curso de Ondas de Elliott do Raimundo Junior pra quem quer aprender o método a fundo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="produtos">
+  <div class="wrap">
+    <span class="eyebrow">O que você encontra aqui</span>
+    <h2>Dois jeitos de acompanhar o mercado comigo</h2>
+    <p class="section-lead">Um é meu — acompanhamento direto. O outro é uma indicação — o curso que eu recomendo pra quem quer aprender o método do zero.</p>
+
+    <div class="products">
+      <div class="product-card primary">
+        <span class="product-tag">Meu produto</span>
+        <h3>Sala BTC</h3>
+        <p>Duas leituras de mercado por semana, direto no seu WhatsApp — região de entrada, ponto de invalidação e alvo, sempre com data e print.</p>
+        <span class="price">R$97/mês · cancele quando quiser</span>
+        <a href="https://luistaira.com/sala-btc" class="btn btn-primary">Entrar na Sala BTC</a>
+      </div>
+
+      <div class="product-card">
+        <span class="product-tag alt">Indicação · afiliado</span>
+        <h3>O Princípio da Onda</h3>
+        <p>Curso completo de Ondas de Elliott e NEoWave, de autoria do <strong style="color:var(--text);">Raimundo Junior</strong> — o "Elliottista". Eu sou afiliado e adiciono, por conta própria, 1 mês de mentoria ao vivo comigo pra quem compra pelo meu link.</p>
+        <span class="price">66 aulas · 18h · 8 módulos</span>
+        <a href="https://luistaira.com/principio-da-onda" class="btn btn-ghost">Ver o curso</a>
+        <p class="affiliate-note">Este é um curso de terceiro (Raimundo Junior), comercializado pela Hotmart. Eu recebo comissão como afiliado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">LUIS<span class="accent" style="color:var(--acc);">TAIRA</span></div>
+    <div class="foot-links">
+      <a href="https://luistaira.com/sala-btc">Sala BTC</a>
+      <a href="https://luistaira.com/principio-da-onda">O Princípio da Onda</a>
+      <a href="https://luistaira.com/links">Todos os links</a>
+    </div>
+    <div class="foot-social">
+      <a href="https://instagram.com/luistaira" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://wa.me/5567981675727" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 17.5 4 20l2.6-0.7A8 8 0 1 0 4 12a7.96 7.96 0 0 0 1.1 4.1Z"/><path d="M9 9.6c0 3.6 2.8 6.4 6.4 6.4 0.6 0 0.9-0.5 0.9-1v-1.1c0-0.3-0.2-0.5-0.5-0.6l-1.7-0.5c-0.3-0.1-0.5 0-0.7 0.2l-0.4 0.5c-1-0.5-1.8-1.3-2.3-2.3l0.5-0.4c0.2-0.2 0.3-0.4 0.2-0.7l-0.5-1.7c-0.1-0.3-0.3-0.5-0.6-0.5H9.9c-0.5 0-0.9 0.4-0.9 0.9Z"/></svg>
+      </a>
+      <a href="https://youtube.com/@luistaira" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.3v5.4l4.8-2.7-4.8-2.7Z" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+    <p class="foot-fine">© 2026 Luis Taira. Nada aqui é recomendação de investimento.</p>
+  </div>
+</footer>
+
+</body>
+</html>
