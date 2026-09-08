@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEoWave Starter — domine a leitura de mercado com estrutura e precisão | Luis Taira</title>
+<meta name="description" content="Curso NEoWave Starter: 36 aulas em 9 módulos para você ler o mercado por estrutura de ondas, tempo e proporção — do zero à aplicação prática em gráficos reais.">
+<meta property="og:title" content="Curso NEoWave Starter — Luis Taira">
+<meta property="og:description" content="Domine a leitura de mercado com estrutura e precisão. 36 aulas em 9 módulos.">
+<meta property="og:image" content="images/neowave-capa.webp">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg:#070A10;
+    --bg-2:#0B111B;
+    --bg-3:#0F1826;
+    --card:#111C2C;
+    --card-2:#14233A;
+    --border:rgba(120,160,210,0.14);
+    --border-strong:rgba(120,170,220,0.28);
+    --text:#EAF1FA;
+    --text-dim:#A7B8CC;
+    --text-mute:#6A7C93;
+    --acc:#21E6E6;
+    --acc-deep:#0FB9C4;
+    --down:#FF5C7A;
+
+    --f-display:'Sora', sans-serif;
+    --f-body:'Manrope', sans-serif;
+    --f-mono:'JetBrains Mono', monospace;
+    --maxw:1060px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--f-body);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  .eyebrow{
+    font-family:var(--f-mono);
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--acc);
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:16px;
+    font-weight:600;
+  }
+  .eyebrow::before{ content:""; width:22px; height:1px; background:var(--acc); }
+
+  h2{ font-family:var(--f-display); font-weight:700; font-size:clamp(25px,3.5vw,34px); line-height:1.2; margin-bottom:14px; letter-spacing:-0.01em; }
+  h3{ font-family:var(--f-display); font-weight:700; font-size:19px; }
+  .section-lead{ color:var(--text-dim); max-width:58ch; margin-bottom:42px; }
+  section{ padding:70px 0; border-top:1px solid var(--border); }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(7,10,16,0.86);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    padding:16px 0;
+  }
+  header .wrap{ display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .brand{ font-family:var(--f-display); font-weight:800; font-size:17px; }
+  .brand .accent{ color:var(--acc); }
+  .nav-links{ display:none; gap:26px; font-size:14.5px; color:var(--text-dim); }
+  .nav-links a:hover{ color:var(--acc); }
+  @media(min-width:900px){ .nav-links{ display:flex; } }
+
+  .btn{
+    font-family:var(--f-display);
+    font-weight:700;
+    font-size:15px;
+    padding:14px 24px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+    text-align:center;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--acc), var(--acc-deep));
+    color:#04141a;
+    box-shadow:0 0 26px rgba(33,230,230,0.3);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 0 40px rgba(33,230,230,0.5); }
+  .btn-ghost{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border-strong);
+    color:var(--text);
+  }
+  .btn-ghost:hover{ background:rgba(255,255,255,0.07); border-color:var(--acc); }
+  .btn-sm{ padding:11px 18px; font-size:14px; }
+  .btn-lg{ padding:18px 34px; font-size:17px; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:60px 0 66px; border-top:none; }
+  .hero-banner{
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid var(--border-strong);
+    box-shadow:0 30px 90px rgba(0,0,0,0.6), 0 0 70px rgba(33,230,230,0.12);
+    margin-bottom:44px;
+  }
+  .hero h1{
+    font-family:var(--f-display);
+    font-weight:800;
+    font-size:clamp(31px, 5vw, 48px);
+    line-height:1.1;
+    letter-spacing:-0.015em;
+    max-width:17ch;
+    margin-bottom:20px;
+  }
+  .hero h1 em{ font-style:normal; color:var(--acc); }
+  .hero .lead{ font-size:17.5px; color:var(--text-dim); max-width:56ch; margin-bottom:30px; }
+  .hero-cta{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:44px; }
+
+  .hero-stats{ display:flex; flex-wrap:wrap; gap:36px; padding-top:30px; border-top:1px solid var(--border); }
+  .hstat b{ display:block; font-family:var(--f-display); font-weight:800; font-size:24px; margin-bottom:2px; }
+  .hstat span{ font-family:var(--f-mono); font-size:12px; color:var(--text-mute); letter-spacing:0.04em; }
+
+  /* ---------- Pillars ---------- */
+  .pillars{ display:grid; grid-template-columns:1fr; gap:18px; }
+  @media(min-width:640px){ .pillars{ grid-template-columns:1fr 1fr; } }
+  @media(min-width:900px){ .pillars{ grid-template-columns:repeat(3,1fr); } }
+  .pillar{
+    background:linear-gradient(180deg, var(--card), var(--bg-3));
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:24px 22px;
+  }
+  .pillar .ic{
+    width:40px; height:40px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(33,230,230,0.10);
+    border:1px solid rgba(33,230,230,0.25);
+    color:var(--acc);
+    margin-bottom:16px;
+  }
+  .pillar .ic svg{ width:20px; height:20px; }
+  .pillar h3{ font-size:17px; margin-bottom:7px; }
+  .pillar p{ font-size:14.5px; color:var(--text-dim); }
+
+  /* ---------- Para quem ---------- */
+  .fit{ display:grid; grid-template-columns:1fr; gap:20px; }
+  @media(min-width:760px){ .fit{ grid-template-columns:1fr 1fr; } }
+  .fit-card{
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:26px 24px;
+    background:var(--bg-2);
+  }
+  .fit-card.yes{ border-color:rgba(33,230,230,0.30); }
+  .fit-card h3{ font-size:17px; margin-bottom:16px; display:flex; align-items:center; gap:9px; }
+  .fit-card ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .fit-card li{ font-size:15px; color:var(--text-dim); display:flex; gap:11px; align-items:flex-start; }
+  .fit-card li svg{ width:17px; height:17px; flex-shrink:0; margin-top:4px; }
+  .fit-card.yes li svg{ color:var(--acc); }
+  .fit-card.no li svg{ color:var(--down); }
+
+  /* ---------- Módulos ---------- */
+  .modules{ display:flex; flex-direction:column; gap:12px; }
+  details.module{
+    background:linear-gradient(180deg, var(--card), var(--bg-3));
+    border:1px solid var(--border);
+    border-radius:13px;
+    overflow:hidden;
+  }
+  details.module[open]{ border-color:var(--border-strong); }
+  details.module summary{
+    list-style:none;
+    cursor:pointer;
+    padding:20px 22px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    transition:background .15s ease;
+  }
+  details.module summary::-webkit-details-marker{ display:none; }
+  details.module summary:hover{ background:rgba(255,255,255,0.02); }
+  .mod-num{
+    font-family:var(--f-mono);
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--acc);
+    background:rgba(33,230,230,0.10);
+    border:1px solid rgba(33,230,230,0.25);
+    width:34px; height:34px;
+    border-radius:9px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .mod-title{ flex:1; font-family:var(--f-display); font-weight:700; font-size:16px; line-height:1.35; }
+  .mod-count{ font-family:var(--f-mono); font-size:11.5px; color:var(--text-mute); flex-shrink:0; }
+  .mod-chev{ color:var(--text-mute); flex-shrink:0; transition:transform .2s ease; }
+  .mod-chev svg{ width:18px; height:18px; display:block; }
+  details.module[open] .mod-chev{ transform:rotate(180deg); }
+  .mod-body{ padding:0 22px 20px 72px; }
+  .mod-body ol{ list-style:none; display:flex; flex-direction:column; gap:9px; }
+  .mod-body li{
+    font-size:14.5px;
+    color:var(--text-dim);
+    padding-left:20px;
+    position:relative;
+  }
+  .mod-body li::before{
+    content:"";
+    position:absolute; left:0; top:9px;
+    width:6px; height:6px; border-radius:50%;
+    background:var(--acc);
+    opacity:0.55;
+  }
+  @media(max-width:520px){
+    .mod-body{ padding-left:22px; }
+    .mod-count{ display:none; }
+  }
+
+  /* ---------- Instrutor ---------- */
+  .teacher{ display:grid; grid-template-columns:1fr; gap:34px; align-items:center; }
+  @media(min-width:760px){ .teacher{ grid-template-columns:210px 1fr; } }
+  .teacher-photo{
+    width:180px; height:180px; border-radius:50%;
+    overflow:hidden; margin:0 auto;
+    border:3px solid var(--bg);
+    box-shadow:0 0 40px rgba(33,230,230,0.22);
+  }
+  .teacher-photo img{ width:100%; height:100%; object-fit:cover; }
+  .teacher-text p{ color:var(--text-dim); margin-bottom:14px; max-width:60ch; }
+  .teacher-text p strong{ color:var(--text); font-weight:600; }
+  .teacher-text p:last-child{ margin-bottom:0; }
+
+  /* ---------- Oferta ---------- */
+  .offer{
+    background:linear-gradient(180deg, rgba(33,230,230,0.07), var(--card-2));
+    border:1px solid var(--border-strong);
+    border-radius:20px;
+    padding:44px 34px;
+    text-align:center;
+    box-shadow:0 0 70px rgba(33,230,230,0.12);
+    max-width:640px;
+    margin:0 auto;
+  }
+  .offer .tag{
+    font-family:var(--f-mono); font-size:11.5px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--acc); display:block; margin-bottom:14px;
+  }
+  .offer h3{ font-size:clamp(22px,3vw,28px); margin-bottom:22px; }
+  .offer .includes{ list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:30px; text-align:left; max-width:400px; margin-left:auto; margin-right:auto; }
+  .offer .includes li{ font-size:15px; color:var(--text-dim); display:flex; gap:11px; align-items:flex-start; }
+  .offer .includes svg{ width:17px; height:17px; color:var(--acc); flex-shrink:0; margin-top:4px; }
+  .price{ margin-bottom:26px; }
+  .price .val{ font-family:var(--f-display); font-weight:800; font-size:46px; letter-spacing:-0.02em; display:block; line-height:1.1; }
+  .price .note{ font-family:var(--f-mono); font-size:12.5px; color:var(--text-mute); }
+  .offer .fine{ font-family:var(--f-mono); font-size:11.5px; color:var(--text-mute); margin-top:18px; }
+
+  /* ---------- FAQ ---------- */
+  .faq{ display:flex; flex-direction:column; gap:2px; max-width:760px; }
+  details.q{ border-bottom:1px solid var(--border); }
+  details.q summary{
+    list-style:none; cursor:pointer;
+    padding:20px 34px 20px 0;
+    font-family:var(--f-display); font-weight:600; font-size:16px;
+    position:relative;
+  }
+  details.q summary::-webkit-details-marker{ display:none; }
+  details.q summary::after{
+    content:"+";
+    position:absolute; right:6px; top:19px;
+    font-family:var(--f-mono); font-size:20px; color:var(--acc);
+    transition:transform .2s ease;
+  }
+  details.q[open] summary::after{ content:"–"; }
+  details.q summary:hover{ color:var(--acc); }
+  details.q p{ padding:0 0 22px; color:var(--text-dim); font-size:15.5px; max-width:64ch; }
+
+  /* ---------- Footer ---------- */
+  footer{ padding:46px 0 60px; border-top:1px solid var(--border); }
+  .disclaimer{
+    font-family:var(--f-mono); font-size:11.5px; line-height:1.85;
+    color:var(--text-mute); max-width:70ch; margin-bottom:26px;
+  }
+  .foot-row{ display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; align-items:center; }
+  .foot-links{ display:flex; gap:20px; flex-wrap:wrap; font-size:14px; color:var(--text-dim); }
+  .foot-links a:hover{ color:var(--acc); }
+
+  /* ---------- Sticky mobile CTA ---------- */
+  .sticky-cta{
+    display:none;
+    position:fixed; left:0; right:0; bottom:0; z-index:60;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(7,10,16,0.94);
+    backdrop-filter:blur(12px);
+    border-top:1px solid var(--border);
+  }
+  .sticky-cta .btn{ width:100%; }
+  @media(max-width:680px){
+    .sticky-cta{ display:block; }
+    body{ padding-bottom:84px; }
+    header .btn{ display:none; }
+  }
+
+  /* ---------- WhatsApp flutuante ---------- */
+  .wa-float{
+    position:fixed;
+    right:20px; bottom:24px;
+    z-index:70;
+    width:56px; height:56px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:#25D366;
+    color:#04240F;
+    box-shadow:0 10px 30px rgba(0,0,0,0.45), 0 0 24px rgba(37,211,102,0.35);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .wa-float:hover{ transform:translateY(-3px); box-shadow:0 14px 36px rgba(0,0,0,0.5), 0 0 34px rgba(37,211,102,0.55); }
+  .wa-float svg{ width:29px; height:29px; }
+  @media(max-width:680px){
+    .wa-float{ bottom:calc(84px + env(safe-area-inset-bottom)); right:16px; width:52px; height:52px; }
+    .wa-float svg{ width:27px; height:27px; }
+  }
+
+  /* ---------- Bloco de dúvida no fim do FAQ ---------- */
+  .ask-box{
+    margin-top:38px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:var(--bg-2);
+    padding:28px 26px;
+    display:flex; flex-wrap:wrap; gap:18px;
+    align-items:center; justify-content:space-between;
+    max-width:760px;
+  }
+  .ask-box p{ font-size:15.5px; color:var(--text-dim); max-width:42ch; }
+  .ask-box p b{ color:var(--text); font-weight:600; display:block; font-family:var(--f-display); font-size:17px; margin-bottom:4px; }
+  .btn-wa{
+    background:#25D366;
+    color:#04240F;
+    box-shadow:0 0 24px rgba(37,211,102,0.28);
+  }
+  .btn-wa:hover{ transform:translateY(-2px); box-shadow:0 0 34px rgba(37,211,102,0.5); }
+  .btn-wa svg{ width:18px; height:18px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">LUIS<span class="accent">TAIRA</span></div>
+    <nav class="nav-links">
+      <a href="#conteudo">Conteúdo</a>
+      <a href="#para-quem">Para quem é</a>
+      <a href="#instrutor">Quem ensina</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#oferta" class="btn btn-primary btn-sm">Quero o curso</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-banner">
+      <img src="images/neowave-banner.webp" alt="Curso NEoWave Starter — domine a leitura de mercado com estrutura e precisão">
+    </div>
+
+    <div class="eyebrow">Curso completo · do zero à aplicação</div>
+    <h1>Pare de adivinhar o mercado. Comece a <em>ler a estrutura</em>.</h1>
+    <p class="lead">O NEoWave Starter te ensina a enxergar o gráfico como uma sequência lógica de movimentos — com regras claras de validação, leitura de tempo e proporção, e aplicação prática em gráficos reais. Sem indicador mágico, sem palpite.</p>
+
+    <div class="hero-cta">
+      <a href="#oferta" class="btn btn-primary btn-lg">Quero começar agora</a>
+      <a href="#conteudo" class="btn btn-ghost btn-lg">Ver o conteúdo</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hstat"><b>36 aulas</b><span>em 9 módulos</span></div>
+      <div class="hstat"><b>NEoWave</b><span>método objetivo</span></div>
+      <div class="hstat"><b>Do zero</b><span>sem pré-requisito</span></div>
+      <div class="hstat"><b>Vitalício</b><span>acesso sem prazo</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="pilares">
+  <div class="wrap">
+    <div class="eyebrow">O que você vai dominar</div>
+    <h2>Cinco pilares, uma leitura só</h2>
+    <p class="section-lead">Cada módulo constrói em cima do anterior. No fim, você olha um gráfico e sabe onde o preço está dentro do ciclo — e, mais importante, quando a sua leitura está errada.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16c3 0 3-8 6-8s3 8 6 8 3-8 8-8"/></svg></div>
+        <h3>Estrutura de ondas</h3>
+        <p>Zigzag, flat, triângulos e combinações — reconhecer cada estrutura pelo que ela é, não pelo que você gostaria que fosse.</p>
+      </div>
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <h3>Tempo e proporção</h3>
+        <p>O diferencial do NEoWave: usar a relação entre tempo e preço para antecipar movimentos, não só descrever o que já aconteceu.</p>
+      </div>
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg></div>
+        <h3>Análise com precisão</h3>
+        <p>Regras obrigatórias, diretrizes e critérios de invalidação. Você aprende a descartar uma contagem errada rápido, em vez de insistir nela.</p>
+      </div>
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></div>
+        <h3>Aplicação prática</h3>
+        <p>Marcação passo a passo em gráficos reais, identificação de cenário — e, com a mesma importância, onde NÃO operar.</p>
+      </div>
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4c-1.5.8-2.5 2.3-2.5 4a4.5 4.5 0 0 0 2 3.7V16a3 3 0 0 0 3 3h3a3 3 0 0 0 3-3v-1.3a4.5 4.5 0 0 0 2-3.7c0-1.7-1-3.2-2.5-4a4 4 0 0 0-4-4Z"/></svg></div>
+        <h3>Disciplina e evolução</h3>
+        <p>Por que a maioria perde mesmo sabendo analisar: overtrading, expectativa irreal e falta de processo. E como construir o seu.</p>
+      </div>
+      <div class="pillar">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v6h6"/><path d="M9 14h6M9 17h4"/></svg></div>
+        <h3>Setup de entrada</h3>
+        <p>O que é um setup válido no NEoWave, confirmações mínimas, onde entrar, onde sair e gestão de risco básica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="para-quem">
+  <div class="wrap">
+    <div class="eyebrow">Antes de comprar</div>
+    <h2>Esse curso é (e não é) pra você</h2>
+    <p class="section-lead">Prefiro perder uma venda a ter alguém frustrado do outro lado. Leia com atenção.</p>
+
+    <div class="fit">
+      <div class="fit-card yes">
+        <h3>É pra você se…</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Você já opera ou estuda gráficos e sente que falta um critério objetivo pra decidir.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Já ouviu falar de Ondas de Elliott, mas achou subjetivo demais — e quer a versão com regras.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Está começando do zero e prefere aprender um método estruturado a colecionar indicadores.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Tem paciência pra estudar. Isso aqui é método, não atalho.</span></li>
+        </ul>
+      </div>
+      <div class="fit-card no">
+        <h3>Não é pra você se…</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Você quer sinais prontos de compra e venda. O curso ensina você a analisar, não entrega ordens.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Está procurando retorno garantido ou lucro rápido. Isso não existe — aqui ou em lugar nenhum.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Não pretende praticar marcação de gráfico por conta própria depois das aulas.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Já domina NEoWave avançado. Este é o Starter — a base sólida, não o nível avançado.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conteudo">
+  <div class="wrap">
+    <div class="eyebrow">Conteúdo do curso</div>
+    <h2>9 módulos, 36 aulas — na ordem certa</h2>
+    <p class="section-lead">Da base mental até o setup de entrada. Clique em cada módulo para ver as aulas.</p>
+
+    <div class="modules">
+
+      <details class="module" open>
+        <summary>
+          <span class="mod-num">01</span>
+          <span class="mod-title">Fundamentos do Mercado (Base Mental)</span>
+          <span class="mod-count">4 aulas</span>
+          <span class="mod-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="mod-body">
+          <ol>
+            <li>O que realmente move o mercado (sem romantização)</li>
+            <li>Diferença entre preço, estrutura e narrativa</li>
+            <li>Por que indicadores comuns falham</li>
+            <li>Introdução ao conceito de ondas</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>
+          <span class="mod-num">02</span>
+          <span class="mod-title">Introdução ao NEoWave</span>
+          <span class="mod-count">4 aulas</span>
+          <span class="mod-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="mod-body">
+          <ol>
+            <li>O que é o NEoWave (e o que NÃO é)</li>
+            <li>Diferença entre Elliott Wave e NEoWave</li>
+            <li>Princípios fundamentais (complexidade, tempo, simetria)</li>
+            <li>Tipos de ondas (impulsivas vs corretivas)</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>
+          <span class="mod-num">03</span>
+          <span class="mod-title">Estruturas Básicas</span>
+          <span class="mod-count">4 aulas</span>
+          <span class="mod-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="mod-body">
+          <ol>
+            <li>Zigzag</li>
+            <li>Flat</li>
+            <li>Triângulos</li>
+            <li>Combinações (duplo / triplo)</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>
+          <span class="mod-num">04</span>
+          <span class="mod-title">Regras e Validação</span>
+          <span class="mod-count">4 aulas</span>
+          <span class="mod-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="mod-body">
+          <ol>
+            <li>Regras obrigatórias</li>
+            <li>Diretrizes (guidelines)</li>
+            <li>Como invalidar uma contagem</li>
+            <li>Erros mais comuns</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>
+          <span class="mod-num">05</span>
+          <span class="mod-title">Tempo e Proporção</span>
+          <span class="mod-count">4 aulas</span>
+          <span class="mod-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="mod-body">
+          <ol>
+            <li>Relação tempo vs preço</li>
+            <li>Simetria de ondas</li>
+            <li>Como usar tempo para antecipação</li>
+            <li>Introdução ao timing de entrada</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>
+          <span class="mod-num">06</span>
+          <span class="mod-title">Aplicação Prática (gráficos reais)</span>
+          <span class="mod-count">4 aulas</span>
+          <span class="mod-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="mod-body">
+          <ol>
+            <li>Leitura ao vivo de mercado</li>
+            <li>Marcação passo a passo</li>
+            <li>Identificação de cenário</li>
+            <li>Onde NÃO operar</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>
+          <span class="mod-num">07</span>
+          <span class="mod-title">Setup Básico (entrada no trade)</span>
+          <span class="mod-count">5 aulas</span>
+          <span class="mod-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="mod-body">
+          <ol>
+            <li>O que é um setup válido no NEoWave</li>
+            <li>Confirmações mínimas</li>
+            <li>Onde entrar</li>
+            <li>Onde sair</li>
+            <li>Gestão de risco básica</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>
+          <span class="mod-num">08</span>
+          <span class="mod-title">Psicologia e Erros</span>
+          <span class="mod-count">4 aulas</span>
+          <span class="mod-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="mod-body">
+          <ol>
+            <li>Por que a maioria perde mesmo com conhecimento</li>
+            <li>Overtrading</li>
+            <li>Expectativa vs realidade</li>
+            <li>Disciplina operacional</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="module">
+        <summary>
+          <span class="mod-num">09</span>
+          <span class="mod-title">Plano de Evolução</span>
+          <span class="mod-count">3 aulas</span>
+          <span class="mod-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="mod-body">
+          <ol>
+            <li>Como evoluir dentro do NEoWave</li>
+            <li>O que estudar depois</li>
+            <li>Introdução ao NEoWave Lab</li>
+          </ol>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<section id="instrutor">
+  <div class="wrap">
+    <div class="eyebrow">Quem ensina</div>
+    <div class="teacher">
+      <div class="teacher-photo">
+        <img src="images/luis-taira.webp" alt="Luis Taira">
+      </div>
+      <div class="teacher-text">
+        <h2 style="margin-bottom:16px;">Luis Taira</h2>
+        <p><strong>Servidor público e analista técnico.</strong> Estudo o mercado de Bitcoin há anos usando Ondas de Elliott — hoje aprofundadas pela abordagem NEoWave, que troca a subjetividade da contagem clássica por um conjunto de regras verificáveis.</p>
+        <p>Criei o NEoWave Starter porque o material sério sobre o método é quase todo em inglês, caro e denso demais pra quem está começando. Aqui a ideia é diferente: te levar do zero até conseguir marcar um gráfico sozinho, com critério.</p>
+        <p>Também compartilho minhas leituras de mercado semanalmente na <strong><a href="https://luistaira.com/sala-btc" style="color:var(--acc);">Sala BTC</a></strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="oferta">
+  <div class="wrap">
+    <div class="offer">
+      <span class="tag">Acesso completo</span>
+      <h3>NEoWave Starter</h3>
+
+      <ul class="includes">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>36 aulas organizadas em 9 módulos progressivos</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Aplicação prática com marcação em gráficos reais</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Acesso vitalício, no seu ritmo, quantas vezes quiser</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Atualizações futuras do curso incluídas</span></li>
+      </ul>
+
+      <!-- TROCAR: valor e parcelamento reais -->
+      <div class="price">
+        <span class="val">R$ 297</span>
+        <span class="note">ou 12x de R$ 29,70 · à vista no Pix</span>
+      </div>
+
+      <!-- TROCAR: colar aqui o link de checkout da Cakto -->
+      <a href="#" class="btn btn-primary btn-lg" style="width:100%; max-width:380px;">Quero garantir minha vaga</a>
+
+      <p class="fine">Garantia de 7 dias. Não gostou, devolvemos o valor integral.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow">Dúvidas frequentes</div>
+    <h2>Perguntas que sempre chegam</h2>
+    <div class="faq" style="margin-top:34px;">
+
+      <details class="q">
+        <summary>Preciso saber alguma coisa antes de começar?</summary>
+        <p>Não. O Módulo 1 começa da base — o que move o mercado, o que é estrutura, por que indicadores comuns falham. Se você nunca abriu um gráfico, ainda assim consegue acompanhar.</p>
+      </details>
+
+      <details class="q">
+        <summary>Qual a diferença entre Ondas de Elliott e NEoWave?</summary>
+        <p>O Elliott clássico deixa muito espaço para interpretação — dois analistas olham o mesmo gráfico e contam de formas diferentes. O NEoWave, desenvolvido por Glenn Neely, adiciona regras obrigatórias, critérios de invalidação e análise de tempo, tornando a leitura muito mais objetiva. O Módulo 2 é inteiro sobre isso.</p>
+      </details>
+
+      <details class="q">
+        <summary>O curso serve para outros ativos além de Bitcoin?</summary>
+        <p>Sim. O método é sobre estrutura de preço, então funciona em qualquer ativo com liquidez e histórico de gráfico — ações, índices, forex, cripto. Meus exemplos usam bastante Bitcoin porque é o mercado que acompanho no dia a dia.</p>
+      </details>
+
+      <details class="q">
+        <summary>Vou receber sinais de compra e venda?</summary>
+        <p>Não. Este é um curso de método — você aprende a fazer a própria análise. Se o que você quer é acompanhar leituras de mercado prontas, isso é o que faço na <a href="https://luistaira.com/sala-btc" style="color:var(--acc);">Sala BTC</a>, que é um produto separado.</p>
+      </details>
+
+      <details class="q">
+        <summary>Por quanto tempo tenho acesso?</summary>
+        <p>Acesso vitalício, incluindo as atualizações futuras. Você estuda no seu ritmo e pode revisitar as aulas quantas vezes precisar.</p>
+      </details>
+
+      <details class="q">
+        <summary>E se eu não gostar?</summary>
+        <p>Você tem 7 dias para pedir reembolso integral, conforme o Código de Defesa do Consumidor. Sem burocracia e sem precisar justificar.</p>
+      </details>
+
+    </div>
+
+    <div class="ask-box">
+      <p><b>Ficou com alguma dúvida?</b>Me manda mensagem no WhatsApp. Quem responde sou eu, não um robô.</p>
+      <a class="btn btn-wa" href="https://wa.me/5567981675727?text=Oi%20Luis!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20curso%20NEoWave%20Starter." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-1-2.3c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.3 5.1 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.5-.3Z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+        Tirar dúvida
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="disclaimer"><b>Aviso de risco:</b> operar no mercado financeiro envolve riscos e pode resultar em perdas, inclusive superiores ao capital investido. Resultados passados não garantem resultados futuros. Este curso tem finalidade exclusivamente educacional — nada aqui constitui recomendação de investimento, consultoria financeira ou promessa de rentabilidade. As decisões de investimento são de responsabilidade exclusiva de quem as toma.</p>
+    <div class="foot-row">
+      <div class="brand">LUIS<span class="accent">TAIRA</span></div>
+      <div class="foot-links">
+        <a href="https://luistaira.com">Início</a>
+        <a href="https://luistaira.com/sala-btc">Sala BTC</a>
+        <a href="https://luistaira.com/links">Links</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a href="#oferta" class="btn btn-primary">Quero o NEoWave Starter</a>
+</div>
+
+<a class="wa-float" href="https://wa.me/5567981675727?text=Oi%20Luis!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20curso%20NEoWave%20Starter." target="_blank" rel="noopener" aria-label="Tirar dúvida no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-1-2.3c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.3 5.1 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.5-.3Z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+</a>
+
+</body>
+</html>
