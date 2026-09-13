@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Script NEoWave — Taira Trader</title>
+<title>Script NEoWave para TradingView — Luis Taira</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
 <!-- Brevo form base styles -->
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css" />
@@ -16,30 +16,30 @@
 </style>
 <style>
   :root{
-    --bg:#0a0d12;
-    --bg-1:#10141b;
-    --bg-2:#161b24;
-    --bg-3:#1d242f;
-    --line:rgba(255,255,255,.07);
-    --line-2:rgba(255,255,255,.12);
-    --line-3:rgba(255,255,255,.22);
-    --text:#ECEFF4;
-    --text-2:rgba(236,239,244,.66);
-    --text-3:rgba(236,239,244,.42);
-    --text-4:rgba(236,239,244,.28);
-    --accent:#22D3EE;          /* azul neon — tweakable */
-    --accent-ink:#0a0d12;
+    --bg:#070A10;
+    --bg-1:#0B111B;
+    --bg-2:#0F1826;
+    --bg-3:#111C2C;
+    --line:rgba(120,160,210,.14);
+    --line-2:rgba(120,170,220,.22);
+    --line-3:rgba(120,170,220,.30);
+    --text:#EAF1FA;
+    --text-2:rgba(234,241,250,.70);
+    --text-3:rgba(234,241,250,.44);
+    --text-4:rgba(234,241,250,.28);
+    --accent:#21E6E6;          /* ciano neon — tweakable */
+    --accent-ink:#04141a;
     --accent-soft:color-mix(in oklab, var(--accent) 14%, transparent);
     --accent-line:color-mix(in oklab, var(--accent) 38%, transparent);
-    --cyan:#22D3EE;
+    --cyan:#21E6E6;
     --pos:#2EE6A8;
-    --neg:#FF5C5C;
+    --neg:#FF5C7A;
     --warn:#FFB020;
     --pad-x: clamp(20px, 5vw, 96px);
     --gut: 24px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--text);font-family:'Sora',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  html,body{background:var(--bg);color:var(--text);font-family:'Manrope',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   html{scroll-behavior:smooth}
   #acesso{scroll-margin-top:84px}
   body{overflow-x:hidden;line-height:1.5}
@@ -49,7 +49,7 @@
   ::selection{background:var(--accent);color:var(--accent-ink)}
 
   /* ───── Typography ───── */
-  .display{font-family:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-0.025em;line-height:0.98}
+  .display{font-family:'Sora',ui-sans-serif,system-ui,sans-serif;font-weight:800;letter-spacing:-0.02em;line-height:1.02}
   .mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-feature-settings:"ss01" on,"cv11" on;letter-spacing:-0.01em}
   .label{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
   .accent-text{color:var(--accent)}
@@ -66,7 +66,7 @@
   .brand-mark{width:32px;height:32px;border-radius:8px;background:var(--bg-2);border:1px solid var(--line-2);display:grid;place-items:center;position:relative;overflow:hidden}
   .brand-mark svg{width:18px;height:18px}
   .brand-text{display:flex;flex-direction:column;line-height:1}
-  .brand-name{font-family:'Space Grotesk';font-weight:600;font-size:14px;letter-spacing:-.01em}
+  .brand-name{font-family:'Sora';font-weight:700;font-size:14px;letter-spacing:-.01em}
   .brand-sub{font-family:'JetBrains Mono';font-size:10px;color:var(--text-3);letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
   .nav-actions{display:flex;align-items:center;gap:10px}
   .ticker{display:flex;align-items:center;gap:10px;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.02);font-family:'JetBrains Mono';font-size:12px}
@@ -81,7 +81,7 @@
   @media (max-width:720px){.ticker{display:none}}
 
   /* ───── Buttons ───── */
-  .btn{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:8px;font-family:'Space Grotesk';font-weight:500;font-size:14px;letter-spacing:-.005em;transition:transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:8px;font-family:'Sora';font-weight:700;font-size:14px;letter-spacing:-.005em;transition:transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease}
   .btn:hover{transform:translateY(-1px)}
   .btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 1px 0 rgba(255,255,255,.25) inset, 0 8px 24px color-mix(in oklab, var(--accent) 30%, transparent)}
   .btn-primary:hover{background:color-mix(in oklab, var(--accent) 90%, white 10%)}
@@ -161,7 +161,7 @@
   .ben{background:var(--bg);padding:28px 24px 30px;display:flex;flex-direction:column;gap:18px;position:relative;min-height:220px;transition:background .25s ease}
   .ben:hover{background:var(--bg-1)}
   .ben-icon{width:44px;height:44px;border-radius:10px;border:1px solid var(--line-2);background:var(--bg-1);display:grid;place-items:center;color:var(--accent)}
-  .ben h3{font-family:'Space Grotesk';font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--text);line-height:1.25}
+  .ben h3{font-family:'Sora';font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text);line-height:1.25}
   .ben p{color:var(--text-2);font-size:14px;line-height:1.55}
   .ben-num{position:absolute;top:18px;right:20px;font-family:'JetBrains Mono';font-size:11px;color:var(--text-4);letter-spacing:.06em}
 
@@ -179,7 +179,7 @@
   .warn-row{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:1px solid var(--line);background:rgba(255,255,255,.015);border-radius:10px}
   .warn-row .xb{width:22px;height:22px;border-radius:6px;flex:0 0 22px;background:color-mix(in oklab, var(--neg) 18%, transparent);color:var(--neg);display:grid;place-items:center;margin-top:1px}
   .warn-row p{color:var(--text-2);font-size:14px;line-height:1.5}
-  .warn-row b{color:var(--text);font-weight:600;display:block;font-family:'Space Grotesk';font-size:14px;margin-bottom:3px}
+  .warn-row b{color:var(--text);font-weight:600;display:block;font-family:'Sora';font-size:14px;margin-bottom:3px}
   .warn-out{margin-top:28px;padding:18px 20px;border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:10px;display:flex;align-items:center;gap:14px;color:var(--text);font-size:15px}
   .warn-out svg{flex:0 0 auto;color:var(--accent)}
   .warn-out b{color:var(--accent);font-weight:600}
@@ -206,7 +206,7 @@
   .who-hd .bb{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-family:'JetBrains Mono';font-weight:600}
   .who-card.yes .bb{background:color-mix(in oklab, var(--pos) 18%, transparent);color:var(--pos)}
   .who-card.no .bb{background:color-mix(in oklab, var(--neg) 18%, transparent);color:var(--neg)}
-  .who-hd h3{font-family:'Space Grotesk';font-size:20px;font-weight:600;letter-spacing:-.01em}
+  .who-hd h3{font-family:'Sora';font-size:20px;font-weight:700;letter-spacing:-.01em}
   .who-hd .sublabel{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-top:2px}
   .who-list{display:flex;flex-direction:column;gap:2px;position:relative}
   .who-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px dashed var(--line)}
@@ -247,7 +247,7 @@
   .cta-card .entry__error{display:block;margin:6px 0 0!important;padding:8px 10px!important;border:0!important;border-radius:6px!important;color:#ffb3b3!important;background:color-mix(in oklab, var(--neg) 14%, transparent)!important;font-family:'JetBrains Mono'!important;font-size:11.5px!important}
   .cta-card .entry__error:empty{display:none!important;padding:0!important;background:transparent!important}
   /* Submit button → site primary */
-  .cta-card .sib-form-block__button{width:100%!important;display:inline-flex!important;align-items:center;justify-content:center;gap:9px;padding:13px 18px!important;border-radius:8px!important;background:var(--accent)!important;color:var(--accent-ink)!important;font-family:'Space Grotesk'!important;font-weight:600!important;font-size:14px!important;border:0!important;cursor:pointer;transition:transform .15s ease, background .15s ease}
+  .cta-card .sib-form-block__button{width:100%!important;display:inline-flex!important;align-items:center;justify-content:center;gap:9px;padding:13px 18px!important;border-radius:8px!important;background:var(--accent)!important;color:var(--accent-ink)!important;font-family:'Sora'!important;font-weight:700!important;font-size:14px!important;border:0!important;cursor:pointer;transition:transform .15s ease, background .15s ease}
   .cta-card .sib-form-block__button:hover{transform:translateY(-1px);background:color-mix(in oklab, var(--accent) 90%, white 10%)!important}
   .cta-card .sib-form-block__button .icon{width:16px;height:16px;fill:currentColor}
   /* Message panels → dark theme */
@@ -279,7 +279,7 @@
 <!-- ─────────────────── NAV ─────────────────── -->
 <nav class="nav">
   <div class="container nav-row">
-    <a href="#" class="brand" aria-label="Taira Trader">
+    <a href="#" class="brand" aria-label="Luis Taira">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
           <path d="M2 17 L7 12 L11 14 L16 7 L22 11" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -287,7 +287,7 @@
         </svg>
       </span>
       <span class="brand-text">
-        <span class="brand-name">Taira Trader</span>
+        <span class="brand-name">LUIS<span style="color:var(--accent)">TAIRA</span></span>
         <span class="brand-sub">Análise NEoWave</span>
       </span>
     </a>
@@ -325,7 +325,7 @@
       <div class="hero-trust">
         <span>Gratuito</span><span class="sep"></span>
         <span>Apenas e-mail</span><span class="sep"></span>
-        <span>Comunidade Taira Trader</span>
+        <span>Comunidade Luis Taira</span>
       </div>
     </div>
 
@@ -484,7 +484,7 @@
         <span class="meta">YouTube ↗</span>
       </div>
       <div class="video">
-        <iframe src="https://www.youtube-nocookie.com/embed/yV9OxrBLrRw?rel=0&modestbranding=1" title="Demonstração Script NEoWave" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube-nocookie.com/embed/bwbeVlRNNP0?rel=0&modestbranding=1" title="Demonstração Script NEoWave" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -672,7 +672,7 @@
         </svg>
       </span>
       <span class="brand-text">
-        <span class="brand-name">Taira Trader</span>
+        <span class="brand-name">LUIS<span style="color:var(--accent)">TAIRA</span></span>
         <span class="brand-sub">© 2026 · Luis Taira</span>
       </span>
     </div>
@@ -752,10 +752,10 @@
 <div id="tweaks-root"></div>
 <script type="text/babel">
   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-    "accent": "#22D3EE",
+    "accent": "#21E6E6",
     "density": "regular",
     "showGrid": true,
-    "headlineFont": "Space Grotesk"
+    "headlineFont": "Sora"
   }/*EDITMODE-END*/;
 
   function TweaksApp() {
@@ -767,25 +767,25 @@
       document.body.classList.add('density-' + t.density);
       document.body.classList.toggle('no-grid', !t.showGrid);
       const fontMap = {
-        'Space Grotesk': "'Space Grotesk',ui-sans-serif,system-ui,sans-serif",
         'Sora':          "'Sora',ui-sans-serif,system-ui,sans-serif",
+        'Manrope':       "'Manrope',ui-sans-serif,system-ui,sans-serif",
         'JetBrains Mono':"'JetBrains Mono',ui-monospace,monospace"
       };
       document.querySelectorAll('.display, .hero-title, .sect-title, .cta-h, .warn-h').forEach(el => {
-        el.style.fontFamily = fontMap[t.headlineFont] || fontMap['Space Grotesk'];
+        el.style.fontFamily = fontMap[t.headlineFont] || fontMap['Sora'];
       });
     }, [t]);
 
     return (
-      <TweaksPanel title="Tweaks · Taira Trader">
+      <TweaksPanel title="Tweaks · Luis Taira">
         <TweakSection label="Cor de destaque" />
         <TweakColor label="Accent" value={t.accent}
-          options={['#22D3EE','#F7A600','#2EE6A8','#A78BFA','#FF6B6B']}
+          options={['#21E6E6','#4D7CFE','#19E59A','#A78BFA']}
           onChange={(v) => setTweak('accent', v)} />
 
         <TweakSection label="Tipografia" />
         <TweakSelect label="Headline" value={t.headlineFont}
-          options={['Space Grotesk','Sora','JetBrains Mono']}
+          options={['Sora','Manrope','JetBrains Mono']}
           onChange={(v) => setTweak('headlineFont', v)} />
 
         <TweakSection label="Layout" />
