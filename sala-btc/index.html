@@ -335,49 +335,104 @@
     color:var(--text-dim);
   }
 
-  /* ---------- Exemplo real ---------- */
-  .example-card{
+  /* ---------- Antes e depois (carrossel) ---------- */
+  .ad-wrap{ position:relative; }
+  .ad-viewport{
+    overflow:hidden;
     border:1px solid var(--line-strong);
+    border-radius:12px;
     background:var(--ink-2);
   }
-  .example-head{
+  .ad-track{
     display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:14px 18px;
+    transition:transform .38s cubic-bezier(.4,0,.2,1);
+    will-change:transform;
+  }
+  .ad-slide{ min-width:100%; }
+  .ad-slide figure{ margin:0; }
+  .ad-slide img{
+    width:100%; display:block;
     border-bottom:1px solid var(--line);
-    font-family:var(--mono);
-    font-size:11px;
-    color:var(--text-dim);
-    flex-wrap:wrap;
-    gap:6px;
+    background:var(--ink);
   }
-  .example-head .live{
-    color:var(--rust);
-  }
-  .example-card img{
-    width:100%;
-    display:block;
-    border-bottom:1px solid var(--line);
-  }
-  .example-call{
-    padding:22px 18px;
-  }
-  .example-call p{
-    font-size:14.5px;
-    color:var(--paper);
-    margin-bottom:12px;
-    line-height:1.6;
-  }
-  .example-call p:last-child{margin-bottom:0;}
-  .example-call .flag{
+  .ad-cap{ padding:18px 20px; }
+  .ad-cap .when{
     font-family:var(--mono);
     font-size:10.5px;
-    color:var(--gold-bright);
+    letter-spacing:0.08em;
     text-transform:uppercase;
-    letter-spacing:0.06em;
+    color:var(--gold-bright);
     display:block;
-    margin-bottom:4px;
+    margin-bottom:7px;
+  }
+  .ad-cap .what{
+    font-size:15px;
+    color:var(--paper);
+    line-height:1.55;
+    margin:0;
+  }
+  .ad-cap .lvl{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim);
+    margin:9px 0 0;
+    line-height:1.7;
+  }
+
+  .ad-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  .ad-dots{ display:flex; gap:9px; }
+  .ad-dots button{
+    width:9px; height:9px; padding:0;
+    border-radius:50%;
+    border:1px solid var(--line-strong);
+    background:transparent;
+    cursor:pointer;
+    transition:background .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  .ad-dots button[aria-current="true"]{
+    background:var(--gold-bright);
+    border-color:var(--gold-bright);
+    transform:scale(1.25);
+  }
+  .ad-nav{ display:flex; align-items:center; gap:10px; }
+  .ad-count{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim);
+    min-width:42px;
+    text-align:right;
+  }
+  .ad-nav button{
+    width:38px; height:38px;
+    border-radius:9px;
+    border:1px solid var(--line-strong);
+    background:rgba(255,255,255,0.03);
+    color:var(--paper);
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color .15s ease, background .15s ease, opacity .15s ease;
+  }
+  .ad-nav button:hover:not(:disabled){ border-color:var(--gold-bright); color:var(--gold-bright); }
+  .ad-nav button:disabled{ opacity:.32; cursor:default; }
+  .ad-nav svg{ width:17px; height:17px; }
+  .ad-note{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-mute, var(--text-dim));
+    margin-top:18px;
+    line-height:1.7;
+  }
+  @media(max-width:560px){
+    .ad-cap{ padding:15px 16px; }
+    .ad-cap .what{ font-size:14px; }
+    .ad-bar{ justify-content:center; }
   }
 
   /* ---------- Pricing ---------- */
@@ -635,21 +690,80 @@
 
 <section>
   <div class="wrap">
-    <div class="eyebrow">Exemplo real</div>
-    <h2>Assim é uma chamada</h2>
-    <p class="section-lead">Print direto do gráfico, sem edição — pra você ver exatamente o que chega no seu WhatsApp.</p>
-    <div class="example-card">
-      <div class="example-head">
-        <span><span class="live">●</span> BTC/USD · 1D · 05 Set 2026, 10:03</span>
-        <span>TradingView</span>
+    <div class="eyebrow">Antes e depois</div>
+    <h2>Chamadas reais, lado a lado</h2>
+    <p class="section-lead">À esquerda, a análise no momento em que foi enviada. À direita, o que o mercado fez depois. Prints direto do gráfico, sem edição.</p>
+
+    <div class="ad-wrap">
+      <div class="ad-viewport">
+        <div class="ad-track" id="adTrack">
+        <div class="ad-slide">
+          <figure>
+            <img src="images/antes-depois/01-14set.webp" alt="Antes e depois: análise de 14 Set · BTC/USD · 1h e o que o mercado fez em seguida" loading="lazy">
+            <figcaption class="ad-cap">
+              <span class="when">14 Set · BTC/USD · 1h</span>
+              <p class="what">Padrão de topo com região de short marcada acima do preço.</p>
+              <p class="lvl">Região: 77.988 – 78.704 · Invalidação: 79.877</p>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="ad-slide">
+          <figure>
+            <img src="images/antes-depois/02-22set.webp" alt="Antes e depois: análise de 22 Set · BTC/USD · 1h e o que o mercado fez em seguida" loading="lazy">
+            <figcaption class="ad-cap">
+              <span class="when">22 Set · BTC/USD · 1h</span>
+              <p class="what">Região de long na correção da onda 2, com alvo na extensão de 161,8%.</p>
+              <p class="lvl">Região: 85.936 – 86.231 · Alvo: 87.960</p>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="ad-slide">
+          <figure>
+            <img src="images/antes-depois/03-24set.webp" alt="Antes e depois: análise de 24 Set · BTC/USD · 2h e o que o mercado fez em seguida" loading="lazy">
+            <figcaption class="ad-cap">
+              <span class="when">24 Set · BTC/USD · 2h</span>
+              <p class="what">Região de short com três alvos mapeados e nível de invalidação do direcional de baixa.</p>
+              <p class="lvl">Região: 84.534 – 85.570 · Alvos: 82.273 e 80.688</p>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="ad-slide">
+          <figure>
+            <img src="images/antes-depois/04-28set-5m.webp" alt="Antes e depois: análise de 28 Set · BTC/USD · 5min e o que o mercado fez em seguida" loading="lazy">
+            <figcaption class="ad-cap">
+              <span class="when">28 Set · BTC/USD · 5min</span>
+              <p class="what">Padrão terminal finalizando — região de short no retorno.</p>
+              <p class="lvl">Região: 83.465 – 83.687 · Invalidação: 83.868</p>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="ad-slide">
+          <figure>
+            <img src="images/antes-depois/05-28set-1h.webp" alt="Antes e depois: análise de 28 Set · BTC/USDC · 1h e o que o mercado fez em seguida" loading="lazy">
+            <figcaption class="ad-cap">
+              <span class="when">28 Set · BTC/USDC · 1h</span>
+              <p class="what">Região de long com dois alvos e invalidação abaixo da extensão de 161,8%.</p>
+              <p class="lvl">Região: 82.434 – 82.920 · Alvos: 84.366 e 85.281</p>
+            </figcaption>
+          </figure>
+        </div>
+        </div>
       </div>
-      <img src="images/exemplo-chamada.png" alt="Gráfico de Bitcoin/Dólar diário no TradingView, mostrando correção A-B-C com região crítica entre 0.382 e 0.618 de Fibonacci">
-      <div class="example-call">
-        <span class="flag">Leitura do momento</span>
-        <p>Preço formando um padrão de topo, com possível finalização da onda C.</p>
-        <p>A região crítica fica entre 66.437,79 e 74.135,53 — é ali que a correção tende a perder força.</p>
-        <p>A invalidação ocorre no rompimento do topo em 82.232,76.</p>
+
+      <div class="ad-bar">
+        <div class="ad-dots" id="adDots"><button type="button" data-go="0" aria-label="Ir para a chamada 1" aria-current="true"></button><button type="button" data-go="1" aria-label="Ir para a chamada 2"></button><button type="button" data-go="2" aria-label="Ir para a chamada 3"></button><button type="button" data-go="3" aria-label="Ir para a chamada 4"></button><button type="button" data-go="4" aria-label="Ir para a chamada 5"></button></div>
+        <div class="ad-nav">
+          <span class="ad-count" id="adCount">1 / 5</span>
+          <button type="button" id="adPrev" aria-label="Chamada anterior" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <button type="button" id="adNext" aria-label="Próxima chamada">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
       </div>
+
+      <p class="ad-note">São exemplos de chamadas enviadas na Sala — não são todas. Nem toda leitura acerta, e as que erram ficam registradas do mesmo jeito.</p>
     </div>
   </div>
 </section>
@@ -750,6 +864,65 @@
       }
     });
   });
+
+  // ---------- Carrossel antes/depois ----------
+  (function(){
+    var track = document.getElementById('adTrack');
+    if(!track) return;
+    var slides = track.children.length;
+    var prev = document.getElementById('adPrev');
+    var next = document.getElementById('adNext');
+    var count = document.getElementById('adCount');
+    var dots = Array.prototype.slice.call(document.querySelectorAll('#adDots button'));
+    var i = 0;
+
+    function render(){
+      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+      count.textContent = (i + 1) + ' / ' + slides;
+      prev.disabled = (i === 0);
+      next.disabled = (i === slides - 1);
+      dots.forEach(function(d, n){
+        if(n === i){ d.setAttribute('aria-current','true'); }
+        else { d.removeAttribute('aria-current'); }
+      });
+    }
+    function go(n){
+      i = Math.max(0, Math.min(slides - 1, n));
+      render();
+    }
+
+    prev.addEventListener('click', function(){ go(i - 1); });
+    next.addEventListener('click', function(){ go(i + 1); });
+    dots.forEach(function(d){
+      d.addEventListener('click', function(){ go(parseInt(d.dataset.go, 10)); });
+    });
+
+    // swipe no celular
+    var x0 = null, y0 = null, locked = false;
+    track.addEventListener('touchstart', function(e){
+      x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; locked = false;
+    }, {passive:true});
+    track.addEventListener('touchmove', function(e){
+      if(x0 === null) return;
+      var dx = e.touches[0].clientX - x0;
+      var dy = e.touches[0].clientY - y0;
+      if(!locked && Math.abs(dx) > Math.abs(dy) + 6){ locked = true; }
+    }, {passive:true});
+    track.addEventListener('touchend', function(e){
+      if(x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if(locked && Math.abs(dx) > 45){ go(dx < 0 ? i + 1 : i - 1); }
+      x0 = null; y0 = null; locked = false;
+    }, {passive:true});
+
+    // setas do teclado
+    document.querySelector('.ad-wrap').addEventListener('keydown', function(e){
+      if(e.key === 'ArrowLeft'){ go(i - 1); }
+      if(e.key === 'ArrowRight'){ go(i + 1); }
+    });
+
+    render();
+  })();
 </script>
 
 </body>
