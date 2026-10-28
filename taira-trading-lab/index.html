@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b0c">
+  <meta name="description" content="Taira Trading Lab — estudos, ferramentas e análises de Bitcoin com método, estrutura e gestão de risco.">
+  <title>Taira Trading Lab — Método. Estrutura. Evolução.</title>
+  <style>
+    :root {
+      --bg: #080b0c;
+      --panel: #101516;
+      --panel2: #151c1d;
+      --text: #f4f7f6;
+      --muted: #a0acab;
+      --line: rgba(255,255,255,.10);
+      --green: #24e0a2;
+      --green2: #0ca879;
+      --cyan: #62f0d0;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background:
+      radial-gradient(ellipse at 80% 0%, rgba(21,126,94,.18), transparent 34rem),
+      radial-gradient(ellipse at 5% 35%, rgba(23,94,82,.10), transparent 28rem),
+      var(--bg);
+      color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .topbar { border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(18px); background: rgba(8,11,12,.82); }
+    .nav { min-height: 76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:11px; font-weight:850; letter-spacing:-.04em; }
+    .brand-mark { width:36px; height:36px; border-radius:11px; display:grid; place-items:center; background:linear-gradient(135deg,var(--green),#07835e); color:#04110d; font-weight:950; font-size:18px; box-shadow:0 0 28px rgba(36,224,162,.18); }
+    .brand small { display:block; font-size:10px; color:var(--muted); letter-spacing:.22em; text-transform:uppercase; margin-top:-3px; font-weight:700; }
+    .navlinks { display:flex; gap:27px; align-items:center; color:#c4ccca; font-size:13px; }
+    .navlinks a:hover { color:var(--green); }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:9px; border:1px solid transparent; border-radius:999px; padding:13px 20px; background:var(--green); color:#04110d; font-weight:850; font-size:13px; transition:.2s; cursor:pointer; }
+    .button:hover { transform:translateY(-2px); background:#57f2bd; box-shadow:0 8px 30px rgba(36,224,162,.16); }
+    .button.ghost { border-color:rgba(255,255,255,.18); background:rgba(255,255,255,.035); color:var(--text); }
+    .button.ghost:hover { border-color:var(--green); color:var(--green); box-shadow:none; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; text-transform:uppercase; letter-spacing:.18em; color:var(--green); font-weight:850; font-size:11px; }
+    .eyebrow:before { content:""; width:22px; height:1px; background:var(--green); }
+    .hero { padding:76px 0 72px; overflow:hidden; }
+    .hero-grid { display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:52px; }
+    h1 { font-size:clamp(42px, 6vw, 76px); line-height:.99; letter-spacing:-.065em; margin:20px 0 22px; max-width:720px; }
+    h1 span { color:var(--green); }
+    .hero p { max-width:580px; color:#b4bfbc; font-size:17px; line-height:1.8; margin:0 0 29px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .hero-note { margin-top:24px; color:#7f8b88; font-size:11px; letter-spacing:.04em; }
+    .portrait-stage { position:relative; min-height:490px; display:flex; align-items:flex-end; justify-content:center; }
+    .portrait-glow { position:absolute; width:82%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(20,192,135,.22),rgba(20,192,135,.04) 48%,transparent 72%); filter:blur(12px); bottom:10%; }
+    .portrait-frame { position:relative; width:min(100%,450px); height:510px; overflow:hidden; border-radius:24px 24px 8px 8px; border:1px solid rgba(255,255,255,.12); background:linear-gradient(160deg,#202827,#080b0c 70%); box-shadow:0 35px 90px rgba(0,0,0,.42); }
+    .portrait-frame:after { content:""; position:absolute; inset:45% 0 0; background:linear-gradient(transparent,rgba(8,11,12,.72)); pointer-events:none; }
+    .portrait-frame img { width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:grayscale(100%) contrast(1.06); }
+    .portrait-label { position:absolute; z-index:2; bottom:20px; left:22px; right:22px; display:flex; align-items:end; justify-content:space-between; gap:14px; }
+    .portrait-label strong { display:block; font-size:19px; letter-spacing:-.03em; }
+    .portrait-label span { color:#b0bab7; font-size:11px; text-transform:uppercase; letter-spacing:.14em; }
+    .signal { position:absolute; z-index:3; right:-12px; top:65px; border:1px solid rgba(36,224,162,.26); border-radius:13px; padding:13px 16px; background:rgba(9,18,16,.92); box-shadow:0 12px 40px rgba(0,0,0,.35); }
+    .signal small { color:#91a19b; display:block; font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+    .signal b { color:var(--green); font-size:18px; }
+    .ticker { border-block:1px solid var(--line); background:rgba(255,255,255,.018); }
+    .ticker-inner { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:21px 0; flex-wrap:wrap; }
+    .ticker-item { display:flex; align-items:center; gap:11px; color:#c0cac7; font-size:12px; }
+    .ticker-item b { color:var(--text); font-size:13px; }
+    .dot { width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 14px var(--green); }
+    section { padding:88px 0; }
+    .section-head { max-width:680px; margin-bottom:34px; }
+    h2 { font-size:clamp(30px,4vw,48px); line-height:1.08; letter-spacing:-.055em; margin:13px 0 15px; }
+    .section-head p { color:var(--muted); font-size:15px; max-width:620px; margin:0; }
+    .products { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .product { min-height:340px; padding:25px; border:1px solid var(--line); border-radius:18px; background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015)); display:flex; flex-direction:column; transition:.22s; position:relative; overflow:hidden; }
+    .product:hover { transform:translateY(-4px); border-color:rgba(36,224,162,.4); background:linear-gradient(145deg,rgba(36,224,162,.075),rgba(255,255,255,.015)); }
+    .product.featured { border-color:rgba(36,224,162,.38); background:linear-gradient(150deg,rgba(36,224,162,.10),rgba(255,255,255,.02) 65%); }
+    .product-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+    .product-icon { width:48px; height:48px; display:grid; place-items:center; border:1px solid rgba(36,224,162,.25); background:rgba(36,224,162,.07); border-radius:14px; color:var(--green); font-size:23px; }
+    .pill { color:var(--green); background:rgba(36,224,162,.09); border:1px solid rgba(36,224,162,.18); border-radius:999px; padding:5px 9px; font-size:9px; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+    .product h3 { margin:24px 0 10px; font-size:22px; letter-spacing:-.035em; }
+    .product p { color:#aab5b2; font-size:13px; line-height:1.75; margin:0 0 20px; }
+    .product ul { list-style:none; padding:0; margin:0 0 25px; display:grid; gap:9px; color:#d4dcda; font-size:12px; }
+    .product li:before { content:"✓"; color:var(--green); font-weight:900; margin-right:9px; }
+    .product .button { margin-top:auto; width:100%; }
+    .product .soon { color:#7e8a87; font-size:10px; text-align:center; margin-top:10px; }
+    .method { display:grid; grid-template-columns:.85fr 1.15fr; gap:55px; align-items:center; }
+    .method-visual { padding:25px; border-radius:22px; border:1px solid var(--line); background:linear-gradient(140deg,#14201d,#0d1112); min-height:320px; position:relative; overflow:hidden; }
+    .chart { position:absolute; inset:0; opacity:.8; background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px); background-size:38px 38px; mask-image:linear-gradient(to bottom,black,transparent); }
+    .candles { position:absolute; inset:40px 25px 35px; display:flex; align-items:center; justify-content:space-around; gap:9px; }
+    .candle { position:relative; width:14px; border-radius:2px; background:var(--green); height:var(--h); box-shadow:0 0 14px rgba(36,224,162,.1); }
+    .candle:before { content:""; position:absolute; width:2px; height:calc(var(--h) + 24px); top:-12px; left:6px; background:currentColor; opacity:.8; }
+    .candle.red { background:#ef5c67; color:#ef5c67; }
+    .candle.green { color:var(--green); }
+    .chart-caption { position:absolute; z-index:2; left:24px; bottom:22px; font-size:11px; color:#d2d9d7; letter-spacing:.1em; text-transform:uppercase; }
+    .steps { display:grid; gap:21px; margin-top:27px; }
+    .step { display:grid; grid-template-columns:42px 1fr; gap:15px; }
+    .step-num { width:38px; height:38px; border-radius:12px; display:grid; place-items:center; color:var(--green); border:1px solid rgba(36,224,162,.25); background:rgba(36,224,162,.06); font-size:12px; font-weight:900; }
+    .step h3 { margin:0 0 5px; font-size:15px; }
+    .step p { color:var(--muted); font-size:13px; margin:0; }
+    .about { background:linear-gradient(180deg,transparent,rgba(255,255,255,.025),transparent); }
+    .about-box { display:grid; grid-template-columns:1fr auto; gap:35px; align-items:center; border:1px solid var(--line); border-radius:22px; padding:36px; background:rgba(255,255,255,.025); }
+    .about-box p { color:var(--muted); max-width:740px; font-size:14px; margin-bottom:0; }
+    .about-stamp { border:1px solid rgba(36,224,162,.25); border-radius:50%; width:108px; height:108px; display:grid; place-items:center; color:var(--green); text-align:center; font-size:10px; line-height:1.5; letter-spacing:.1em; font-weight:900; transform:rotate(-9deg); }
+    .cta { padding:0 0 85px; }
+    .cta-box { padding:48px; border:1px solid rgba(36,224,162,.25); border-radius:24px; background:radial-gradient(ellipse at 85% 0%,rgba(36,224,162,.13),transparent 45%),#101615; display:flex; align-items:center; justify-content:space-between; gap:30px; }
+    .cta-box h2 { max-width:620px; margin-top:0; }
+    .cta-box p { color:var(--muted); margin-bottom:0; max-width:620px; font-size:14px; }
+    footer { border-top:1px solid var(--line); padding:28px 0 35px; color:#77827f; font-size:11px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .disclaimer { max-width:760px; line-height:1.7; margin-top:14px; }
+
+    .offer { padding: 0 0 30px; }
+    .offer-card { border:1px solid rgba(36,224,162,.38); border-radius:22px; padding:30px 34px; background:radial-gradient(ellipse at 100% 0%,rgba(36,224,162,.14),transparent 45%),linear-gradient(120deg,#111a17,#0c1011); display:grid; grid-template-columns:1fr auto; align-items:center; gap:25px; }
+    .offer-card h2 { font-size:clamp(27px,3.4vw,40px); margin:10px 0 10px; }
+    .offer-card p { color:var(--muted); font-size:14px; margin:0; max-width:700px; }
+    .price-block { text-align:right; min-width:220px; }
+    .price { font-size:clamp(43px,5vw,60px); font-weight:950; line-height:1; letter-spacing:-.07em; color:var(--green); }
+    .price small { font-size:14px; letter-spacing:0; color:#c3cfcb; font-weight:700; }
+    .price-notes { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+    .price-notes span { border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.035); border-radius:999px; padding:7px 11px; color:#d7dfdc; font-size:11px; }
+    .included-note { color:var(--green); font-size:11px; font-weight:850; text-transform:uppercase; letter-spacing:.14em; margin-top:15px; }
+    @media(max-width:700px) { .offer-card { grid-template-columns:1fr; padding:25px 22px; } .price-block { text-align:left; min-width:0; } }
+
+    @media(max-width:900px) {
+      .hero-grid,.method { grid-template-columns:1fr; gap:30px; }
+      .hero { padding-top:55px; }
+      .portrait-stage { min-height:420px; }
+      .portrait-frame { height:440px; max-width:420px; }
+      .signal { right:calc(50% - 210px); }
+      .products { grid-template-columns:repeat(2,1fr); }
+      .about-box { grid-template-columns:1fr; }
+      .about-stamp { display:none; }
+    }
+    @media(max-width:620px) {
+      .wrap { width:min(100% - 28px,var(--max)); }
+      .nav { min-height:66px; }
+      .navlinks { display:none; }
+      .nav .button { padding:10px 13px; font-size:11px; }
+      .hero { padding:44px 0 52px; }
+      h1 { font-size:47px; }
+      .hero p { font-size:15px; }
+      .portrait-stage { min-height:370px; }
+      .portrait-frame { height:390px; width:100%; }
+      .signal { right:0; top:35px; }
+      .ticker-inner { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+      section { padding:64px 0; }
+      .products { grid-template-columns:1fr; }
+      .product { min-height:300px; }
+      .method-visual { min-height:250px; }
+      .about-box { padding:24px; }
+      .cta { padding-bottom:60px; }
+      .cta-box { padding:28px 23px; display:block; }
+      .cta-box .button { margin-top:22px; width:100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#" aria-label="Taira Trading Lab - início">
+        <span class="brand-mark">T</span>
+        <span>TAIRA <small>TRADING LAB</small></span>
+      </a>
+      <nav class="navlinks" aria-label="Navegação principal">
+        <a href="#produtos">Produtos</a><a href="#metodo">O método</a><a href="#sobre">Sobre</a>
+      </nav>
+      <a class="button ghost" href="#produtos">Explorar o Lab <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Análise • Educação • Ferramentas</div>
+          <h1>Menos ruído.<br>Mais <span>estrutura.</span></h1>
+          <p>Uma única assinatura para acessar a Sala BTC, cursos, ferramentas e conteúdos de trading em um só lugar. Tudo por R$ 47 por mês, com 7 dias de garantia e liberdade para cancelar quando quiser.</p>
+          <div class="hero-actions">
+            <a class="button" href="#produtos">Ver tudo por R$ 47/mês <span aria-hidden="true">→</span></a>
+            <a class="button ghost" href="https://luistaira.com/sala-btc/">Conhecer a Sala BTC</a>
+          </div>
+          <div class="hero-note">ACESSO COMPLETO · R$ 47/MÊS · SEM FIDELIDADE</div>
+        </div>
+        <div class="portrait-stage">
+          <div class="portrait-glow"></div>
+          <div class="portrait-frame">
+            <img src="assets/luistaira-retrato.webp" alt="Retrato de Luis Taira" fetchpriority="high">
+            <div class="portrait-label"><div><strong>Luis Taira</strong><span>Fundador · Taira Trading Lab</span></div><span>01 / LAB</span></div>
+          </div>
+          <div class="signal"><small>Princípio do Lab</small><b>Método > achismo</b></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker">
+      <div class="wrap ticker-inner">
+        <div class="ticker-item"><span class="dot"></span><div><b>Leitura de mercado</b><br>Contexto antes da entrada</div></div>
+        <div class="ticker-item"><span class="dot"></span><div><b>Educação prática</b><br>Do conceito à aplicação</div></div>
+        <div class="ticker-item"><span class="dot"></span><div><b>Ferramentas</b><br>Organização do processo</div></div>
+        <div class="ticker-item"><span class="dot"></span><div><b>Gestão de risco</b><br>Disciplina em primeiro lugar</div></div>
+      </div>
+    </div>
+
+    <section class="offer" id="assinatura">
+      <div class="wrap">
+        <div class="offer-card">
+          <div>
+            <div class="eyebrow">Uma assinatura. Todo o ecossistema.</div>
+            <h2>Seu acesso completo ao Taira Trading Lab.</h2>
+            <p>Uma assinatura de sala de análise pode custar cerca de R$ 97 por mês, enquanto cursos de trading podem chegar a R$ 997 ou ultrapassar R$ 2.000 cada. No Taira Trading Lab, a proposta é reunir Sala BTC, cursos e ferramentas em um único lugar por R$ 47/mês.</p>
+            <div class="price-notes"><span>✓ 7 dias de garantia</span><span>✓ Cancele quando quiser</span><span>✓ Sem fidelidade</span></div>
+            <div class="included-note">Sala BTC + cursos + ferramentas + novos conteúdos incluídos conforme o plano</div>
+          </div>
+          <div class="price-block">
+            <div class="price">R$ 47<small>/mês</small></div>
+            <p style="margin:8px 0 17px;font-size:11px">Uma cobrança recorrente. Sem contrato de permanência.</p>
+            <a class="button" href="#produtos">Conhecer o que está incluído <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="produtos">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Explore o ecossistema</div>
+          <h2>Um laboratório.<br>Várias formas de evoluir.</h2>
+          <p>Tudo faz parte de uma única assinatura de R$ 47/mês. A Sala BTC é apenas uma das experiências: você também encontra cursos, ferramentas e materiais de apoio no mesmo lugar.</p>
+        </div>
+        <div class="products">
+          <article class="product featured">
+            <div class="product-top"><div class="product-icon">₿</div><span class="pill">Comunidade</span></div>
+            <h3>Sala BTC</h3>
+            <p>Acompanhe as análises do Bitcoin e os estudos de cenário em uma comunidade dedicada ao mercado.</p>
+            <ul><li>Análises e contexto de BTC</li><li>Comunidade privada no Telegram</li><li>Conteúdo para acompanhar o mercado</li></ul>
+            <a class="button" href="https://luistaira.com/sala-btc/">Incluída na assinatura <span>✓</span></a>
+          </article>
+          <article class="product">
+            <div class="product-top"><div class="product-icon">〰</div><span class="pill">Curso</span></div>
+            <h3>NEoWave Starter</h3>
+            <p>Uma porta de entrada para estudar a metodologia NEoWave e compreender a lógica por trás da análise de ondas.</p>
+            <ul><li>Fundamentos e conceitos</li><li>Leitura estruturada de gráficos</li><li>Aprendizado por etapas</li></ul>
+            <a class="button ghost" href="#produtos">Incluído na assinatura <span>✓</span></a>
+            <div class="soon">Adicione o link de checkout quando o produto estiver disponível.</div>
+          </article>
+          <article class="product">
+            <div class="product-top"><div class="product-icon">▥</div><span class="pill">Curso</span></div>
+            <h3>TradingView na Prática</h3>
+            <p>Aprenda a organizar seu gráfico, usar recursos da plataforma e construir um ambiente de análise mais funcional.</p>
+            <ul><li>Ferramentas e configurações</li><li>Organização de layouts</li><li>Aplicação no dia a dia</li></ul>
+            <a class="button ghost" href="#produtos">Incluído na assinatura <span>✓</span></a>
+            <div class="soon">Adicione o link de checkout quando o produto estiver disponível.</div>
+          </article>
+          <article class="product">
+            <div class="product-top"><div class="product-icon">⇄</div><span class="pill">Curso</span></div>
+            <h3>Corretoras na Prática</h3>
+            <p>Conheça funções importantes das plataformas e aprenda a navegar pelas ferramentas usadas para operar.</p>
+            <ul><li>Conhecendo as interfaces</li><li>Ordens e funcionalidades</li><li>Cuidados operacionais</li></ul>
+            <a class="button ghost" href="#produtos">Incluído na assinatura <span>✓</span></a>
+            <div class="soon">Adicione o link de checkout quando o produto estiver disponível.</div>
+          </article>
+          <article class="product">
+            <div class="product-top"><div class="product-icon">⌁</div><span class="pill">Ferramenta</span></div>
+            <h3>Script NEoWave</h3>
+            <p>Ferramenta de apoio para o TradingView, pensada para complementar os estudos e a leitura dos gráficos.</p>
+            <ul><li>Recurso para TradingView</li><li>Apoio visual à análise</li><li>Material complementar</li></ul>
+            <a class="button ghost" href="#produtos">Incluído na assinatura <span>✓</span></a>
+            <div class="soon">Adicione o link de acesso ou checkout quando estiver disponível.</div>
+          </article>
+          <article class="product">
+            <div class="product-top"><div class="product-icon">＋</div><span class="pill">Em expansão</span></div>
+            <h3>Novos conteúdos</h3>
+            <p>O ecossistema pode crescer com novas aulas, materiais de apoio e ferramentas para sua rotina de estudos.</p>
+            <ul><li>Novos módulos</li><li>Materiais complementares</li><li>Atualizações do Lab</li></ul>
+            <a class="button ghost" href="#produtos">Parte do ecossistema <span>✓</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo">
+      <div class="wrap method">
+        <div class="method-visual" aria-label="Ilustração abstrata de gráfico de candles">
+          <div class="chart"></div>
+          <div class="candles">
+            <i class="candle green" style="--h:28%"></i><i class="candle red" style="--h:18%"></i>
+            <i class="candle green" style="--h:36%"></i><i class="candle green" style="--h:24%"></i>
+            <i class="candle red" style="--h:43%"></i><i class="candle green" style="--h:56%"></i>
+            <i class="candle green" style="--h:40%"></i><i class="candle red" style="--h:32%"></i>
+            <i class="candle green" style="--h:67%"></i><i class="candle green" style="--h:53%"></i>
+            <i class="candle red" style="--h:46%"></i><i class="candle green" style="--h:78%"></i>
+          </div>
+          <div class="chart-caption">Contexto · Estrutura · Risco</div>
+        </div>
+        <div>
+          <div class="eyebrow">A proposta do Lab</div>
+          <h2>Não é sobre prever tudo.<br>É sobre ter um processo.</h2>
+          <p style="color:var(--muted);font-size:14px">O mercado é incerto. O objetivo do Taira Trading Lab é reunir educação, ferramentas e análises para ajudar você a estudar com mais organização — sem promessas de lucro ou atalhos milagrosos.</p>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><h3>Entenda o contexto</h3><p>Observe a estrutura do mercado antes de buscar uma oportunidade.</p></div></div>
+            <div class="step"><div class="step-num">02</div><div><h3>Estude com método</h3><p>Construa repertório e critérios, em vez de depender de palpites isolados.</p></div></div>
+            <div class="step"><div class="step-num">03</div><div><h3>Respeite o risco</h3><p>Planejamento, disciplina e proteção do capital fazem parte do processo.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="about">
+      <div class="wrap">
+        <div class="about-box">
+          <div>
+            <div class="eyebrow">Quem está por trás</div>
+            <h2 style="font-size:clamp(28px,3vw,38px)">Conhecimento aplicado, sem complicar.</h2>
+            <p>O Taira Trading Lab reúne projetos de educação e análise de mercado desenvolvidos por Luis Taira, com foco em Bitcoin, leitura gráfica e metodologia NEoWave. A proposta é tornar o estudo mais organizado e prático para quem está construindo sua própria jornada no mercado.</p>
+          </div>
+          <div class="about-stamp">MÉTODO<br>EM VEZ DE<br>ACHISMO</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <div class="cta-box">
+          <div><div class="eyebrow">Comece por aqui</div><h2>Encontre o recurso certo para sua próxima etapa.</h2><p>Tenha a Sala BTC, cursos e ferramentas em uma única assinatura de R$ 47/mês. Experimente por 7 dias e cancele quando quiser, sem fidelidade.</p></div>
+          <a class="button" href="#produtos">Ver o que está incluído <span>→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner"><span>© <span id="year"></span> Taira Trading Lab · Luis Taira</span><span>Conteúdo educacional e informativo.</span></div>
+      <div class="disclaimer">Aviso de risco: conteúdos, análises e ferramentas têm finalidade exclusivamente educacional e informativa. Não constituem recomendação de investimento nem garantia de resultados. Criptoativos e operações alavancadas envolvem risco elevado, inclusive de perda substancial ou total do capital.</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
