@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b0c">
+  <title>Sala BTC com Luis Taira — Análises de Bitcoin no WhatsApp</title>
+  <meta name="description" content="Acompanhe a leitura de Bitcoin de Luis Taira no WhatsApp: cenários, regiões de entrada, invalidação e alvos. Cursos e materiais na área de membros incluídos por R$47/mês.">
+  <link rel="canonical" href="https://luistaira.com/salabtc/">
+  <meta property="og:title" content="Sala BTC com Luis Taira">
+  <meta property="og:description" content="Minha leitura do Bitcoin. Direto no seu WhatsApp. Análises e área de membros por R$47/mês.">
+  <meta property="og:url" content="https://luistaira.com/salabtc/">
+  <meta property="og:type" content="website">
+  <style>
+    :root {
+      --bg: #080b0c;
+      --panel: #101516;
+      --panel2: #151c1d;
+      --text: #f4f7f6;
+      --muted: #a0acab;
+      --line: rgba(255,255,255,.10);
+      --green: #24e0a2;
+      --green2: #0ca879;
+      --cyan: #62f0d0;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background:
+      radial-gradient(ellipse at 80% 0%, rgba(21,126,94,.18), transparent 34rem),
+      radial-gradient(ellipse at 5% 35%, rgba(23,94,82,.10), transparent 28rem),
+      var(--bg);
+      color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .topbar { border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(18px); background: rgba(8,11,12,.82); }
+    .nav { min-height: 76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:11px; font-weight:850; letter-spacing:-.04em; }
+    .brand-mark { width:36px; height:36px; border-radius:11px; display:grid; place-items:center; background:linear-gradient(135deg,var(--green),#07835e); color:#04110d; font-weight:950; font-size:18px; box-shadow:0 0 28px rgba(36,224,162,.18); }
+    .brand small { display:block; font-size:10px; color:var(--muted); letter-spacing:.22em; text-transform:uppercase; margin-top:-3px; font-weight:700; }
+    .navlinks { display:flex; gap:27px; align-items:center; color:#c4ccca; font-size:13px; }
+    .navlinks a:hover { color:var(--green); }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:9px; border:1px solid transparent; border-radius:999px; padding:13px 20px; background:var(--green); color:#04110d; font-weight:850; font-size:13px; transition:.2s; cursor:pointer; }
+    .button:hover { transform:translateY(-2px); background:#57f2bd; box-shadow:0 8px 30px rgba(36,224,162,.16); }
+    .button.ghost { border-color:rgba(255,255,255,.18); background:rgba(255,255,255,.035); color:var(--text); }
+    .button.ghost:hover { border-color:var(--green); color:var(--green); box-shadow:none; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; text-transform:uppercase; letter-spacing:.18em; color:var(--green); font-weight:850; font-size:11px; }
+    .eyebrow:before { content:""; width:22px; height:1px; background:var(--green); }
+    .hero { padding:76px 0 72px; overflow:hidden; }
+    .hero-grid { display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:52px; }
+    h1 { font-size:clamp(42px, 6vw, 76px); line-height:.99; letter-spacing:-.065em; margin:20px 0 22px; max-width:720px; }
+    h1 span { color:var(--green); }
+    .hero p { max-width:580px; color:#b4bfbc; font-size:17px; line-height:1.8; margin:0 0 29px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .hero-note { margin-top:24px; color:#7f8b88; font-size:11px; letter-spacing:.04em; }
+    .portrait-stage { position:relative; min-height:490px; display:flex; align-items:flex-end; justify-content:center; }
+    .portrait-glow { position:absolute; width:82%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(20,192,135,.22),rgba(20,192,135,.04) 48%,transparent 72%); filter:blur(12px); bottom:10%; }
+    .portrait-frame { position:relative; width:min(100%,450px); height:510px; overflow:hidden; border-radius:24px 24px 8px 8px; border:1px solid rgba(255,255,255,.12); background:linear-gradient(160deg,#202827,#080b0c 70%); box-shadow:0 35px 90px rgba(0,0,0,.42); }
+    .portrait-frame:after { content:""; position:absolute; inset:45% 0 0; background:linear-gradient(transparent,rgba(8,11,12,.72)); pointer-events:none; }
+    .portrait-frame img { width:100%; height:100%; object-fit:cover; object-position:center 22%; filter:grayscale(100%) contrast(1.06); }
+    .portrait-label { position:absolute; z-index:2; bottom:20px; left:22px; right:22px; display:flex; align-items:end; justify-content:space-between; gap:14px; }
+    .portrait-label strong { display:block; font-size:19px; letter-spacing:-.03em; }
+    .portrait-label span { color:#b0bab7; font-size:11px; text-transform:uppercase; letter-spacing:.14em; }
+    .signal { position:absolute; z-index:3; right:-12px; top:65px; border:1px solid rgba(36,224,162,.26); border-radius:13px; padding:13px 16px; background:rgba(9,18,16,.92); box-shadow:0 12px 40px rgba(0,0,0,.35); }
+    .signal small { color:#91a19b; display:block; font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+    .signal b { color:var(--green); font-size:18px; }
+    .ticker { border-block:1px solid var(--line); background:rgba(255,255,255,.018); }
+    .ticker-inner { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:21px 0; flex-wrap:wrap; }
+    .ticker-item { display:flex; align-items:center; gap:11px; color:#c0cac7; font-size:12px; }
+    .ticker-item b { color:var(--text); font-size:13px; }
+    .dot { width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 14px var(--green); }
+    section { padding:88px 0; }
+    .section-head { max-width:680px; margin-bottom:34px; }
+    h2 { font-size:clamp(30px,4vw,48px); line-height:1.08; letter-spacing:-.055em; margin:13px 0 15px; }
+    .section-head p { color:var(--muted); font-size:15px; max-width:620px; margin:0; }
+    .products { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .product { min-height:340px; padding:25px; border:1px solid var(--line); border-radius:18px; background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015)); display:flex; flex-direction:column; transition:.22s; position:relative; overflow:hidden; }
+    .product:hover { transform:translateY(-4px); border-color:rgba(36,224,162,.4); background:linear-gradient(145deg,rgba(36,224,162,.075),rgba(255,255,255,.015)); }
+    .product.featured { border-color:rgba(36,224,162,.38); background:linear-gradient(150deg,rgba(36,224,162,.10),rgba(255,255,255,.02) 65%); }
+    .product-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+    .product-icon { width:48px; height:48px; display:grid; place-items:center; border:1px solid rgba(36,224,162,.25); background:rgba(36,224,162,.07); border-radius:14px; color:var(--green); font-size:23px; }
+    .pill { color:var(--green); background:rgba(36,224,162,.09); border:1px solid rgba(36,224,162,.18); border-radius:999px; padding:5px 9px; font-size:9px; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+    .product h3 { margin:24px 0 10px; font-size:22px; letter-spacing:-.035em; }
+    .product p { color:#aab5b2; font-size:13px; line-height:1.75; margin:0 0 20px; }
+    .product ul { list-style:none; padding:0; margin:0 0 25px; display:grid; gap:9px; color:#d4dcda; font-size:12px; }
+    .product li:before { content:"✓"; color:var(--green); font-weight:900; margin-right:9px; }
+    .product .button { margin-top:auto; width:100%; }
+    .product .soon { color:#7e8a87; font-size:10px; text-align:center; margin-top:10px; }
+    .method { display:grid; grid-template-columns:.85fr 1.15fr; gap:55px; align-items:center; }
+    .method-visual { padding:25px; border-radius:22px; border:1px solid var(--line); background:linear-gradient(140deg,#14201d,#0d1112); min-height:320px; position:relative; overflow:hidden; }
+    .chart { position:absolute; inset:0; opacity:.8; background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px); background-size:38px 38px; mask-image:linear-gradient(to bottom,black,transparent); }
+    .candles { position:absolute; inset:40px 25px 35px; display:flex; align-items:center; justify-content:space-around; gap:9px; }
+    .candle { position:relative; width:14px; border-radius:2px; background:var(--green); height:var(--h); box-shadow:0 0 14px rgba(36,224,162,.1); }
+    .candle:before { content:""; position:absolute; width:2px; height:calc(var(--h) + 24px); top:-12px; left:6px; background:currentColor; opacity:.8; }
+    .candle.red { background:#ef5c67; color:#ef5c67; }
+    .candle.green { color:var(--green); }
+    .chart-caption { position:absolute; z-index:2; left:24px; bottom:22px; font-size:11px; color:#d2d9d7; letter-spacing:.1em; text-transform:uppercase; }
+    .steps { display:grid; gap:21px; margin-top:27px; }
+    .step { display:grid; grid-template-columns:42px 1fr; gap:15px; }
+    .step-num { width:38px; height:38px; border-radius:12px; display:grid; place-items:center; color:var(--green); border:1px solid rgba(36,224,162,.25); background:rgba(36,224,162,.06); font-size:12px; font-weight:900; }
+    .step h3 { margin:0 0 5px; font-size:15px; }
+    .step p { color:var(--muted); font-size:13px; margin:0; }
+    .about { background:linear-gradient(180deg,transparent,rgba(255,255,255,.025),transparent); }
+    .about-box { display:grid; grid-template-columns:1fr auto; gap:35px; align-items:center; border:1px solid var(--line); border-radius:22px; padding:36px; background:rgba(255,255,255,.025); }
+    .about-box p { color:var(--muted); max-width:740px; font-size:14px; margin-bottom:0; }
+    .about-stamp { border:1px solid rgba(36,224,162,.25); border-radius:50%; width:108px; height:108px; display:grid; place-items:center; color:var(--green); text-align:center; font-size:10px; line-height:1.5; letter-spacing:.1em; font-weight:900; transform:rotate(-9deg); }
+    .cta { padding:0 0 85px; }
+    .cta-box { padding:48px; border:1px solid rgba(36,224,162,.25); border-radius:24px; background:radial-gradient(ellipse at 85% 0%,rgba(36,224,162,.13),transparent 45%),#101615; display:flex; align-items:center; justify-content:space-between; gap:30px; }
+    .cta-box h2 { max-width:620px; margin-top:0; }
+    .cta-box p { color:var(--muted); margin-bottom:0; max-width:620px; font-size:14px; }
+    footer { border-top:1px solid var(--line); padding:28px 0 35px; color:#77827f; font-size:11px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .disclaimer { max-width:760px; line-height:1.7; margin-top:14px; }
+
+    .offer { padding: 0 0 30px; }
+    .offer-card { border:1px solid rgba(36,224,162,.38); border-radius:22px; padding:30px 34px; background:radial-gradient(ellipse at 100% 0%,rgba(36,224,162,.14),transparent 45%),linear-gradient(120deg,#111a17,#0c1011); display:grid; grid-template-columns:1fr auto; align-items:center; gap:25px; }
+    .offer-card h2 { font-size:clamp(27px,3.4vw,40px); margin:10px 0 10px; }
+    .offer-card p { color:var(--muted); font-size:14px; margin:0; max-width:700px; }
+    .price-block { text-align:right; min-width:220px; }
+    .price { font-size:clamp(43px,5vw,60px); font-weight:950; line-height:1; letter-spacing:-.07em; color:var(--green); }
+    .price small { font-size:14px; letter-spacing:0; color:#c3cfcb; font-weight:700; }
+    .price-notes { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+    .price-notes span { border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.035); border-radius:999px; padding:7px 11px; color:#d7dfdc; font-size:11px; }
+    .included-note { color:var(--green); font-size:11px; font-weight:850; text-transform:uppercase; letter-spacing:.14em; margin-top:15px; }
+    @media(max-width:700px) { .offer-card { grid-template-columns:1fr; padding:25px 22px; } .price-block { text-align:left; min-width:0; } }
+
+    @media(max-width:900px) {
+      .hero-grid,.method { grid-template-columns:1fr; gap:30px; }
+      .hero { padding-top:55px; }
+      .portrait-stage { min-height:420px; }
+      .portrait-frame { height:440px; max-width:420px; }
+      .signal { right:calc(50% - 210px); }
+      .products { grid-template-columns:repeat(2,1fr); }
+      .about-box { grid-template-columns:1fr; }
+      .about-stamp { display:none; }
+    }
+    @media(max-width:620px) {
+      .wrap { width:min(100% - 28px,var(--max)); }
+      .nav { min-height:66px; }
+      .navlinks { display:none; }
+      .nav .button { padding:10px 13px; font-size:11px; }
+      .hero { padding:44px 0 52px; }
+      h1 { font-size:47px; }
+      .hero p { font-size:15px; }
+      .portrait-stage { min-height:370px; }
+      .portrait-frame { height:390px; width:100%; }
+      .signal { right:0; top:35px; }
+      .ticker-inner { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+      section { padding:64px 0; }
+      .products { grid-template-columns:1fr; }
+      .product { min-height:300px; }
+      .method-visual { min-height:250px; }
+      .about-box { padding:24px; }
+      .cta { padding-bottom:60px; }
+      .cta-box { padding:28px 23px; display:block; }
+      .cta-box .button { margin-top:22px; width:100%; }
+    }
+  
+    img{display:block;max-width:100%;height:auto;}
+    section[id]{scroll-margin-top:95px;}
+    a:focus-visible,summary:focus-visible{outline:3px solid var(--green);outline-offset:5px;}
+    .brand{font-size:22px;white-space:nowrap;}.brand small{font-size:12px;letter-spacing:.08em;margin-top:0;}
+    .brand-mark{font-size:22px;}.navlinks,.button{font-size:14px;}.button{padding:14px 23px;}
+    .eyebrow{font-size:14px;letter-spacing:.12em;}.hero-note{font-size:14px;color:var(--muted);}
+    h1{font-size:clamp(42px,5.3vw,68px);line-height:1.06;letter-spacing:-.055em;}
+    .hero p{font-size:18px;}.hero-grid{grid-template-columns:1.15fr .85fr;gap:40px;}
+    .portrait-label span,.signal small{font-size:14px;}.portrait-label strong{font-size:22px;}
+    .signal{right:0;top:50px;}.signal b{font-size:17px;}
+    .ticker-item{font-size:14px;}.ticker-item b{font-size:16px;}.dot{display:none;}
+    .section-head p,.step p,.about-box p,.offer-card p{font-size:17px;line-height:1.75;}
+    .step h3{font-size:19px;}.step-num{font-size:18px;}.method{grid-template-columns:1fr 1fr;}
+    .method .steps{margin-top:0;}.method-intro{padding:32px;border:1px solid var(--line);border-radius:22px;background:var(--panel);}
+    .message-grid,.comparison-before{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start;}
+    .message-grid{max-width:920px;margin:auto;}
+    .example-card{margin:0;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel);min-width:0;}
+    .example-card>a,.comparison-before a{display:block;}.example-card img{width:100%;height:auto;}
+    .example-caption{padding:24px;}.example-caption h3{font-size:22px;margin:0 0 10px;letter-spacing:-.03em;}
+    .example-caption p{font-size:16px;color:var(--muted);line-height:1.75;margin:0;}
+    .example-date{display:block;color:var(--green);font-size:14px;margin-bottom:10px;}
+    .comparison-before{padding:0 24px 16px;}.comparison-before figure{margin:0;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;}
+    .comparison-before figcaption{font-size:14px;color:var(--muted);padding:14px;}
+    .example-gallery{display:grid;gap:24px;}.example-caption .lvl{font-size:14px;margin-top:10px;}
+    .evidence-note,.section-note{font-size:14px;color:var(--muted);line-height:1.75;margin:22px 0 0;}
+    .more-examples{margin-top:24px;border:1px solid var(--line);border-radius:18px;padding:22px;background:rgba(255,255,255,.02);}
+    summary{cursor:pointer;font-weight:750;line-height:1.5;}.more-examples[open] summary{margin-bottom:24px;}
+    .members{background:linear-gradient(180deg,rgba(36,224,162,.025),transparent);}
+    .products{grid-template-columns:repeat(2,minmax(0,1fr));}.product{min-height:0;}.product h3{margin-top:16px;}
+    .product p,.product ul{font-size:16px;}.product ul{margin-bottom:0;}.pill{font-size:12px;letter-spacing:.04em;}.product-icon{font-size:22px;}
+    .included-label{font-size:14px;color:var(--green);font-weight:700;}
+    .about-box{grid-template-columns:1fr;}.offer{padding:60px 0 70px;}.price-block{min-width:260px;}
+    .price-notes span,.included-note{font-size:14px;letter-spacing:0;}.checkout-note{margin-top:14px!important;font-size:14px!important;}
+    .offer-list{padding-left:20px;color:var(--muted);font-size:16px;line-height:1.9;}
+    .faq{max-width:850px;}.faq details{border-bottom:1px solid var(--line);padding:22px 0;}.faq summary{font-size:18px;}.faq p{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:0;}
+    .contact{font-size:16px;color:var(--muted);}.contact a{color:var(--green);text-decoration:underline;text-underline-offset:4px;}
+    footer{font-size:14px;}.disclaimer{font-size:14px;}.portrait-frame img{height:100%;}
+    @media(max-width:900px){.navlinks{display:none;}.hero-grid,.method{grid-template-columns:1fr;}.hero-grid{gap:36px;}.portrait-stage{max-width:500px;width:100%;margin:auto;}.hero h1{max-width:20ch;}.navlinks{gap:16px;}}
+    @media(max-width:620px){.wrap{width:calc(100% - 36px);}.brand{font-size:20px;}.brand small{font-size:11px;}.nav{gap:12px;}.nav .button{font-size:13px;padding:11px 15px;}.hero h1{font-size:43px;}.hero p{font-size:17px;}.hero-actions .button{width:100%;}.portrait-frame{height:420px;}.portrait-label span{font-size:12px;}.signal{top:24px;right:8px;padding:10px 13px;}.signal small{font-size:12px;}.signal b{font-size:15px;}.ticker-inner{grid-template-columns:1fr 1fr;gap:20px;}.ticker-item{font-size:13px;}.ticker-item b{font-size:15px;}.eyebrow{font-size:13px;letter-spacing:.08em;}.message-grid,.comparison-before,.products{grid-template-columns:1fr;}.comparison-before{padding:0 16px 16px;}.example-caption{padding:21px;}.method-intro{padding:24px;}.offer-card{padding:26px 22px;}.price-block{min-width:0;}.price-block .button{width:100%;}.more-examples{padding:16px;}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none!important;}}
+</style>
+</head><body>
+  <header class="topbar"><div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="Sala BTC — início"><span class="brand-mark" aria-hidden="true">₿</span><span>SALA BTC<small>com Luis Taira</small></span></a>
+    <nav class="navlinks" aria-label="Navegação principal"><a href="#a-sala">A sala</a><a href="#antes-depois">Antes e depois</a><a href="#area-de-membros">Área de membros</a></nav>
+    <a class="button ghost" href="#assinatura">Quero entrar</a>
+  </div></header>
+  <main>
+    <section class="hero" id="inicio"><div class="wrap hero-grid">
+      <div><div class="eyebrow">Sala BTC · Análises de Bitcoin</div>
+        <h1>Minha leitura do Bitcoin.<br><span>Direto no seu WhatsApp.</span></h1>
+        <p>Acompanhe os cenários que estou observando, as regiões de entrada, a invalidação e os alvos. Da visão macro às ideias de curto prazo, com atualizações conforme o mercado se movimenta.</p>
+        <div class="hero-actions"><a class="button" href="#assinatura">Entrar na Sala BTC · R$47/mês</a><a class="button ghost" href="#na-pratica">Ver a sala por dentro</a></div>
+        <div class="hero-note">Cursos e materiais na área de membros incluídos. Sem fidelidade.</div>
+      </div>
+      <div class="portrait-stage"><div class="portrait-glow"></div><div class="portrait-frame"><img src="assets/luis-taira.webp" alt="Luis Taira, responsável pelas análises da Sala BTC" width="1108" height="1419" fetchpriority="high"><div class="portrait-label"><div><strong>Luis Taira</strong><span>Leitura de mercado · Bitcoin</span></div></div></div><div class="signal"><small>O que eu observo</small><b>Contexto · Níveis · Risco</b></div></div>
+    </div></section>
+    <div class="ticker"><div class="wrap ticker-inner">
+      <div class="ticker-item"><div><b>Bitcoin como foco</b><br>Macro e curto prazo</div></div><div class="ticker-item"><div><b>Direto no WhatsApp</b><br>Grupo fechado de avisos</div></div><div class="ticker-item"><div><b>Cenários e níveis</b><br>Entrada, invalidação e alvos</div></div><div class="ticker-item"><div><b>Área de membros</b><br>Cursos e materiais incluídos</div></div>
+    </div></div>
+    <section id="a-sala"><div class="wrap method">
+      <div class="method-intro"><div class="eyebrow">O acompanhamento</div><h2>O gráfico muda.<br>A leitura acompanha.</h2><p class="section-note">Na Sala BTC, compartilho o que estou vendo no mercado e por que aquelas regiões importam. Você acompanha a análise, as oportunidades que identifico e os pontos em que a ideia deixa de valer.</p></div>
+      <div class="steps">
+        <div class="step"><div class="step-num" aria-hidden="true">₿</div><div><h3>Entenda o cenário</h3><p>Duas leituras semanais do Bitcoin, com gráfico e comentários sobre a estrutura do mercado.</p></div></div>
+        <div class="step"><div class="step-num" aria-hidden="true">⌁</div><div><h3>Acompanhe os níveis</h3><p>Quando houver uma ideia de operação, veja a região de interesse, a invalidação e os alvos da análise.</p></div></div>
+        <div class="step"><div class="step-num" aria-hidden="true">↻</div><div><h3>Receba as atualizações</h3><p>Avisos extras quando o preço chega a regiões importantes ou a leitura muda. A decisão de operar e o risco são seus.</p></div></div>
+      </div>
+    </div></section>
+    <section id="na-pratica"><div class="wrap">
+      <div class="section-head"><div class="eyebrow">Por dentro da sala</div><h2>É assim que as análises<br>chegam para você.</h2><p>Prints reais do grupo: o cenário maior, os comentários da leitura e uma ideia de entrada de curto prazo. Toque nas imagens para ampliar.</p></div>
+      <div class="message-grid">
+        <figure class="example-card"><a href="assets/analises/grupo-cenario-macro.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar print do cenário macro"><img src="assets/analises/grupo-cenario-macro.png" alt="Atualização real do cenário macro de Bitcoin no WhatsApp da Sala BTC" width="566" height="849" loading="lazy"></a><figcaption class="example-caption"><h3>A visão macro</h3><p>A estrutura do Bitcoin e os cenários que estou acompanhando, com o raciocínio por trás da análise.</p></figcaption></figure>
+        <figure class="example-card"><a href="assets/analises/grupo-ideia-entrada.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar print de uma ideia de entrada"><img src="assets/analises/grupo-ideia-entrada.png" alt="Mensagem real da Sala BTC com região de long no gráfico de cinco minutos e comentário sobre stop curto" width="558" height="854" loading="lazy"></a><figcaption class="example-caption"><h3>As ideias de entrada</h3><p>Regiões de interesse no gráfico e comentários sobre o momento e o risco da ideia.</p></figcaption></figure>
+      </div>
+    </div></section>
+    <section id="antes-depois"><div class="wrap">
+      <div class="section-head"><div class="eyebrow">Antes e depois</div><h2>A ideia no gráfico.<br>E o que veio depois.</h2><p>Os registros da análise de 23 de novembro de 2026: primeiro a região de entrada e os alvos; depois, o movimento do Bitcoin.</p></div>
+      <article class="example-card" aria-label="Antes e depois da análise de 23 de novembro de 2026">
+      <div class="example-caption"><span class="example-date">23 Nov 2026 · BTC/USD</span><h3>Antes: região de entrada e alvos definidos</h3><p>Dois registros anteriores ao movimento: o detalhe da região de long no gráfico de 1 minuto e os alvos projetados no gráfico de 15 minutos.</p></div>
+      <div class="comparison-before">
+        <figure><a href="assets/analises/antes-depois/23nov-antes-entrada-1m.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar antes: região de entrada no gráfico de um minuto"><img src="assets/analises/antes-depois/23nov-antes-entrada-1m.png" alt="Antes, 23 de novembro às 00h54 UTC-3: gráfico BTCUSD de um minuto com região de long e stop curto marcados" width="1600" height="817" loading="lazy"></a><figcaption>Antes · 00h54 (UTC−3) · 1min<br>Região de long e stop curto marcados.</figcaption></figure>
+        <figure><a href="assets/analises/antes-depois/23nov-antes-alvos-15m.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar antes: alvos no gráfico de quinze minutos"><img src="assets/analises/antes-depois/23nov-antes-alvos-15m.png" alt="Antes, 23 de novembro às 00h59 UTC-3: gráfico BTCUSD de quinze minutos com quatro alvos projetados antes da alta" width="1600" height="817" loading="lazy"></a><figcaption>Antes · 00h59 (UTC−3) · 15min<br>Alvos projetados para o movimento.</figcaption></figure>
+      </div>
+      <div class="example-caption"><h3>Depois: o movimento no gráfico</h3><p>Registro das 21h59 (UTC−3), no mesmo dia. O preço avançou pela região dos três primeiros alvos; o quarto alvo segue acima do movimento mostrado.</p></div>
+      <a href="assets/analises/exemplo-btc-23nov.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar depois: movimento de Bitcoin registrado às vinte e uma horas e cinquenta e nove minutos"><img src="assets/analises/exemplo-btc-23nov.png" alt="Depois, 23 de novembro às 21h59 UTC-3: gráfico BTCUSD de quinze minutos mostra a alta posterior em relação à região marcada e aos alvos projetados" width="1600" height="817" loading="lazy"></a>
+    </article>
+      <details class="more-examples"><summary>Ver mais cinco exemplos de antes e depois</summary><div class="example-gallery"><figure class="example-card">
+            <a href="assets/analises/antes-depois/01-14set.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar comparação de antes e depois"><img src="assets/analises/antes-depois/01-14set.webp" alt="Antes e depois: análise de 14 Set · BTC/USD · 1h e o que o mercado fez em seguida" width="1536" height="831" loading="lazy"></a>
+            <figcaption class="example-caption">
+              <span class="example-date">14 Set · BTC/USD · 1h</span>
+              <p class="what">Padrão de topo com região de short marcada acima do preço.</p>
+              <p class="lvl">Região: 77.988 – 78.704 · Invalidação: 79.877</p>
+            </figcaption>
+          </figure>
+<figure class="example-card">
+            <a href="assets/analises/antes-depois/02-22set.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar comparação de antes e depois"><img src="assets/analises/antes-depois/02-22set.webp" alt="Antes e depois: análise de 22 Set · BTC/USD · 1h e o que o mercado fez em seguida" width="1536" height="831" loading="lazy"></a>
+            <figcaption class="example-caption">
+              <span class="example-date">22 Set · BTC/USD · 1h</span>
+              <p class="what">Região de long na correção da onda 2, com alvo na extensão de 161,8%.</p>
+              <p class="lvl">Região: 85.936 – 86.231 · Alvo: 87.960</p>
+            </figcaption>
+          </figure>
+<figure class="example-card">
+            <a href="assets/analises/antes-depois/03-24set.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar comparação de antes e depois"><img src="assets/analises/antes-depois/03-24set.webp" alt="Antes e depois: análise de 24 Set · BTC/USD · 2h e o que o mercado fez em seguida" width="1536" height="831" loading="lazy"></a>
+            <figcaption class="example-caption">
+              <span class="example-date">24 Set · BTC/USD · 2h</span>
+              <p class="what">Região de short com três alvos mapeados e nível de invalidação do direcional de baixa.</p>
+              <p class="lvl">Região: 84.534 – 85.570 · Alvos: 82.273 e 80.688</p>
+            </figcaption>
+          </figure>
+<figure class="example-card">
+            <a href="assets/analises/antes-depois/04-28set-5m.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar comparação de antes e depois"><img src="assets/analises/antes-depois/04-28set-5m.webp" alt="Antes e depois: análise de 28 Set · BTC/USD · 5min e o que o mercado fez em seguida" width="1536" height="831" loading="lazy"></a>
+            <figcaption class="example-caption">
+              <span class="example-date">28 Set · BTC/USD · 5min</span>
+              <p class="what">Padrão terminal finalizando — região de short no retorno.</p>
+              <p class="lvl">Região: 83.465 – 83.687 · Invalidação: 83.868</p>
+            </figcaption>
+          </figure>
+<figure class="example-card">
+            <a href="assets/analises/antes-depois/05-28set-1h.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar comparação de antes e depois"><img src="assets/analises/antes-depois/05-28set-1h.webp" alt="Antes e depois: análise de 28 Set · BTC/USDC · 1h e o que o mercado fez em seguida" width="1536" height="831" loading="lazy"></a>
+            <figcaption class="example-caption">
+              <span class="example-date">28 Set · BTC/USDC · 1h</span>
+              <p class="what">Região de long com dois alvos e invalidação abaixo da extensão de 161,8%.</p>
+              <p class="lvl">Região: 82.434 – 82.920 · Alvos: 84.366 e 85.281</p>
+            </figcaption>
+          </figure></div></details>
+      <p class="evidence-note">Exemplos históricos selecionados, não um levantamento de resultados da sala. As análises podem falhar. Resultados passados não garantem resultados futuros.</p>
+    </div></section>
+    <section id="area-de-membros" class="members"><div class="wrap">
+      <div class="section-head"><div class="eyebrow">Área de membros · Incluída</div><h2>Quer aprofundar?<br>O material está aqui.</h2><p>A assinatura também inclui cursos e materiais para você estudar no seu ritmo. O acompanhamento fica no WhatsApp; os conteúdos de apoio, na área de membros da Hubla.</p></div>
+      <div class="products">
+        <article class="product"><div class="product-top"><div class="product-icon" aria-hidden="true">〰</div><span class="pill">Curso incluído</span></div><h3>NEoWave Starter</h3><p>Fundamentos da metodologia e da leitura de ondas, para entender melhor o raciocínio das análises.</p><span class="included-label">Na área de membros</span></article>
+        <article class="product"><div class="product-top"><div class="product-icon" aria-hidden="true">▥</div><span class="pill">Curso incluído</span></div><h3>TradingView na Prática</h3><p>Configurações, layouts e ferramentas para organizar seu gráfico e acompanhar os estudos.</p><span class="included-label">Na área de membros</span></article>
+        <article class="product"><div class="product-top"><div class="product-icon" aria-hidden="true">⇄</div><span class="pill">Curso incluído</span></div><h3>Corretoras na Prática</h3><p>Interfaces, ordens e cuidados operacionais nas plataformas usadas para operar.</p><span class="included-label">Na área de membros</span></article>
+        <article class="product"><div class="product-top"><div class="product-icon" aria-hidden="true">⌁</div><span class="pill">Material incluído</span></div><h3>Script NEoWave e materiais</h3><p>Recursos de apoio para o TradingView e materiais complementares para seus estudos.</p><span class="included-label">Incluídos na assinatura</span></article>
+      </div>
+    </div></section>
+    <section id="sobre" class="about"><div class="wrap"><div class="about-box"><div><div class="eyebrow">Quem está do outro lado</div><h2>Eu sou o Luis Taira.</h2><p>Sou servidor público e estudo o mercado de Bitcoin há anos, usando Ondas de Elliott e a abordagem NEoWave. Na Sala BTC, compartilho minhas leituras, o raciocínio dos cenários e as atualizações ao longo do caminho.</p><p>Os registros permitem voltar à análise e comparar com o que aconteceu depois. Meu compromisso é mostrar a leitura com clareza, incluindo quando ela precisa ser revista.</p></div></div></div></section>
+    <section class="offer" id="assinatura"><div class="wrap"><div class="offer-card">
+      <div><div class="eyebrow">Entre para a Sala BTC</div><h2>Acompanhe o Bitcoin comigo.</h2><p>Uma assinatura mensal para receber as análises e acessar os conteúdos da área de membros.</p><ul class="offer-list"><li>Grupo fechado no WhatsApp</li><li>Duas leituras semanais e avisos extras</li><li>Cenários, regiões de entrada, invalidação e alvos</li><li>Cursos e materiais na área de membros</li></ul><div class="price-notes"><span>Cancele quando quiser</span><span>Sem fidelidade</span><span>Pagamento pela Hubla</span></div></div>
+      <div class="price-block"><div class="price">R$47<small>/mês</small></div><p style="margin:12px 0 22px">Sala BTC + área de membros</p><a class="button" href="https://pay.hub.la/KpRMAcpPzFiyT6MypEtl">Quero entrar na Sala BTC</a><p class="checkout-note">Assinatura mensal recorrente.<br>Você conclui o pagamento na Hubla.</p></div>
+    </div><p class="contact">Ficou com dúvida antes de entrar? <a href="https://wa.me/5567981675727">Fale comigo no WhatsApp.</a></p></div></section>
+    <section id="duvidas"><div class="wrap"><div class="section-head"><div class="eyebrow">Perguntas frequentes</div><h2>Antes de entrar.</h2></div><div class="faq">
+      <details><summary>Preciso saber analisar gráficos?</summary><p>Você pode acompanhar os comentários e os cenários sem dominar análise técnica. Os prints trazem contagens e níveis; os cursos incluídos ajudam a entender o método e a gestão de risco.</p></details>
+      <details><summary>A sala acompanha curto prazo ou só a visão macro?</summary><p>Os dois. Há leituras do cenário maior e ideias de curto prazo, como mostram os exemplos de 1, 5 e 15 minutos. Cada análise tem seu horizonte; não há uma entrada obrigatória a cada atualização.</p></details>
+      <details><summary>Como recebo as análises e acesso os cursos?</summary><p>As análises chegam em um grupo fechado de avisos no WhatsApp. Os cursos e materiais ficam na área de membros da Hubla. Depois da confirmação do pagamento, siga as orientações de acesso da plataforma. Se precisar, fale comigo pelo WhatsApp desta página.</p></details>
+      <details><summary>Preciso fazer os cursos para participar?</summary><p>Os cursos são um benefício incluído para estudar no seu ritmo. Você pode acompanhar a sala e recorrer aos materiais quando quiser aprofundar um assunto.</p></details>
+      <details><summary>É garantia de lucro ou execução automática?</summary><p>Não. Você recebe minha leitura do mercado e decide se vai operar, com qual tamanho de posição e qual risco. A sala não executa operações por você. Bitcoin e operações alavancadas envolvem risco de perda.</p></details>
+      <details><summary>Posso cancelar quando quiser?</summary><p>Sim. A assinatura é mensal, sem fidelidade. Você pode cancelar a renovação automática pela Hubla e mantém o acesso até o fim do período já pago.</p></details>
+    </div></div></section>
+  </main>
+  <footer><div class="wrap"><div class="footer-inner"><span>© 2026 Sala BTC · Luis Taira</span><span>Análises de Bitcoin e área de membros.</span></div><p class="disclaimer">Aviso de risco: análises e materiais têm caráter educacional e informativo. Não constituem garantia de resultado ou consultoria financeira individual. Criptoativos e operações alavancadas envolvem risco elevado, inclusive de perda substancial ou total do capital.</p></div></footer>
+</body></html>
