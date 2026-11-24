@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sala BTC — Leitura de mercado por Luis Taira</title>
+<title>Sala BTC com Luis Taira — Análises de Bitcoin</title>
+<meta name="description" content="Acompanhe as análises de Bitcoin de Luis Taira no WhatsApp. Cenários, regiões de interesse, invalidação e alvos. Cursos e materiais incluídos por R$47/mês, pela Hubla.">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap');
 
@@ -354,106 +355,6 @@
     line-height:1.6;
   }
 
-  /* ---------- Antes e depois (carrossel) ---------- */
-  .ad-wrap{ position:relative; }
-  .ad-viewport{
-    overflow:hidden;
-    border:1px solid var(--line-strong);
-    border-radius:12px;
-    background:var(--ink-2);
-  }
-  .ad-track{
-    display:flex;
-    transition:transform .38s cubic-bezier(.4,0,.2,1);
-    will-change:transform;
-  }
-  .ad-slide{ min-width:100%; }
-  .ad-slide figure{ margin:0; }
-  .ad-slide img{
-    width:100%; display:block;
-    border-bottom:1px solid var(--line);
-    background:var(--ink);
-  }
-  .ad-cap{ padding:18px 20px; }
-  .ad-cap .when{
-    font-family:var(--mono);
-    font-size:10.5px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--gold-bright);
-    display:block;
-    margin-bottom:7px;
-  }
-  .ad-cap .what{
-    font-size:15px;
-    color:var(--paper);
-    line-height:1.55;
-    margin:0;
-  }
-  .ad-cap .lvl{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--text-dim);
-    margin:9px 0 0;
-    line-height:1.7;
-  }
-
-  .ad-bar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    margin-top:16px;
-    flex-wrap:wrap;
-  }
-  .ad-dots{ display:flex; gap:9px; }
-  .ad-dots button{
-    width:9px; height:9px; padding:0;
-    border-radius:50%;
-    border:1px solid var(--line-strong);
-    background:transparent;
-    cursor:pointer;
-    transition:background .15s ease, border-color .15s ease, transform .15s ease;
-  }
-  .ad-dots button[aria-current="true"]{
-    background:var(--gold-bright);
-    border-color:var(--gold-bright);
-    transform:scale(1.25);
-  }
-  .ad-nav{ display:flex; align-items:center; gap:10px; }
-  .ad-count{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--text-dim);
-    min-width:42px;
-    text-align:right;
-  }
-  .ad-nav button{
-    width:38px; height:38px;
-    border-radius:9px;
-    border:1px solid var(--line-strong);
-    background:rgba(255,255,255,0.03);
-    color:var(--paper);
-    cursor:pointer;
-    display:flex; align-items:center; justify-content:center;
-    transition:border-color .15s ease, background .15s ease, opacity .15s ease;
-  }
-  .ad-nav button:hover:not(:disabled){ border-color:var(--gold-bright); color:var(--gold-bright); }
-  .ad-nav button:disabled{ opacity:.32; cursor:default; }
-  .ad-nav svg{ width:17px; height:17px; }
-  .ad-note{
-    font-family:var(--mono);
-    font-size:11.5px;
-    color:var(--text-mute, var(--text-dim));
-    margin-top:18px;
-    line-height:1.7;
-  }
-  @media(max-width:560px){
-    .ad-cap{ padding:15px 16px; }
-    .ad-cap .what{ font-size:14px; }
-    .ad-bar{ justify-content:center; }
-  }
-
   /* ---------- Pricing ---------- */
   .price-card{
     background:var(--ink-2);
@@ -601,6 +502,27 @@
     font-size:14px;
     color:var(--text-dim);
   }
+
+  .hero h1{max-width:21ch;}
+  .message-grid,.bonus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start;}
+  .example-card{margin:0;background:var(--ink-2);border:1px solid var(--line-strong);border-radius:12px;overflow:hidden;min-width:0;}
+  .example-card img{width:100%;height:auto;display:block;}
+  .example-card a{display:block;}
+  .example-card a:focus-visible{outline:3px solid var(--gold);outline-offset:-3px;}
+  .example-caption{padding:20px;}
+  .example-caption h3,.bonus-grid h3{font-size:18px;margin-bottom:8px;}
+  .example-caption p,.bonus-grid p{color:var(--text-dim);font-size:16px;line-height:1.65;}
+  .example-date{display:block;color:var(--gold);margin-bottom:8px;font-size:14px;}
+  .example-caption .lvl{margin-top:8px;font-size:14px;}
+  .example-gallery{display:grid;gap:24px;}
+  .chart-example,.section-cta{margin-top:28px;}
+  .bonus-grid article{padding:24px;border:1px solid var(--line-strong);background:var(--ink-2);border-radius:12px;}
+  .eyebrow,.stamp,.proto,.fine{font-size:14px;}
+  .fine{line-height:1.7;}
+  .step p,.cred-text p,.ledger-row .desc strong,.ledger-row .desc span,.price-card li,.pp-steps li,.faq-a p{font-size:16px;}
+  @media(max-width:600px){.message-grid,.bonus-grid{grid-template-columns:1fr;}.hero{padding-top:44px;}.wrap{padding-inline:20px;}.hero h1{font-size:34px;}.cta-row .btn{width:100%;text-align:center;}.price-card{padding:28px 22px;}.eyebrow{letter-spacing:.07em;}.fine{font-family:var(--sans);}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none!important;}}
+
 </style>
 </head>
 <body>
@@ -608,21 +530,21 @@
 <header>
   <div class="wrap">
     <div class="brand">Sala <span>BTC</span></div>
-    <div class="proto">PROTOCOLO Nº 001 · LEITURA DE MERCADO · BTC/USD</div>
+    <div class="proto">COM LUIS TAIRA · TAIRA TRADING LAB</div>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow">Boletim de acompanhamento semanal</div>
-    <h1>Saiba quando é hora de <em>comprar</em> ou <em>vender</em> Bitcoin.</h1>
-    <p class="lead">Duas leituras de mercado por semana, direto no seu WhatsApp — sem gráfico complicado, sem termo técnico. Você recebe a região de entrada, o ponto que invalida a análise e o alvo, sempre com data e print.</p>
+    <div class="eyebrow">Sala BTC com Luis Taira</div>
+    <h1>Minha leitura do <em>Bitcoin.</em> Os níveis que estou acompanhando.</h1>
+    <p class="lead">Acompanhe minhas análises no WhatsApp: cenários, regiões de interesse, invalidação e alvos. Veja como a leitura evolui conforme o mercado se movimenta — da visão macro às oportunidades de curto prazo.</p>
 
     <div class="cta-row">
-      <a href="#preco" class="btn btn-primary">Entrar na Sala BTC — R$97/mês</a>
+      <a href="#preco" class="btn btn-primary">Entrar na Sala BTC — R$47/mês</a>
       <a href="#como-funciona" class="btn btn-ghost">Ver como funciona</a>
     </div>
-    <p class="fine">Cancele quando quiser. Sem contrato de fidelidade.</p>
+    <p class="fine">Assinatura mensal pela Hubla. Cursos e materiais incluídos. Cancele quando quiser.</p>
   </div>
 </section>
 
@@ -630,7 +552,7 @@
   <div class="wrap">
     <div class="eyebrow">Como funciona</div>
     <h2>Três coisas, direto ao ponto</h2>
-    <p class="section-lead">Nada de curso, nada de plataforma nova pra aprender. É acompanhamento, dentro do WhatsApp que você já usa.</p>
+    <p class="section-lead">O acompanhamento acontece no WhatsApp que você já usa. Os cursos e materiais ficam como bônus na área de membros da Hubla, para estudar quando quiser.</p>
   </div>
   <div class="wrap">
     <div class="steps">
@@ -647,16 +569,72 @@
       <div class="step">
         <span class="num">03</span>
         <h3>Você decide</h3>
-        <p>A análise mostra a região de compra, o ponto que cancela a ideia e o alvo. A decisão final é sempre sua.</p>
+        <p>Você acompanha os cenários e, quando houver uma oportunidade, os níveis da ideia. A decisão de operar e o tamanho do risco são seus.</p>
       </div>
     </div>
   </div>
 </section>
 
+<section id="na-pratica"><div class="wrap">
+  <div class="eyebrow">Por dentro da Sala BTC</div><h2>É assim que as análises chegam no grupo</h2>
+  <p class="section-lead">Prints reais: atualização do cenário macro, comentários sobre a estrutura e uma região de interesse para entrada. Toque em cada imagem para ampliar.</p>
+  <div class="message-grid">
+    <figure class="example-card"><a href="images/grupo-cenario-macro.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar print da leitura macro no WhatsApp"><img src="images/grupo-cenario-macro.png" alt="Mensagens reais da Sala BTC no WhatsApp, com atualização da contagem macro e comentários de Luis Taira" width="566" height="849" loading="lazy"></a><figcaption class="example-caption"><h3>A visão macro</h3><p>O cenário maior e o raciocínio por trás da leitura, com atualizações no próprio grupo.</p></figcaption></figure>
+    <figure class="example-card"><a href="images/grupo-ideia-entrada.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar print da ideia de entrada no WhatsApp"><img src="images/grupo-ideia-entrada.png" alt="Mensagem real da Sala BTC com região para testar entrada long, gráfico de cinco minutos e comentário sobre stop curto" width="558" height="854" loading="lazy"></a><figcaption class="example-caption"><h3>As ideias de curto prazo</h3><p>Regiões de interesse no gráfico e comentários sobre a entrada e o risco da ideia.</p></figcaption></figure>
+  </div>
+  <figure class="example-card chart-example"><a href="images/exemplo-btc-23nov.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar gráfico de Bitcoin de 23 de novembro"><img src="images/exemplo-btc-23nov.png" alt="Gráfico histórico BTCUSD de 15 minutos, registrado em 23 de novembro de 2026, com região marcada, invalidação e alvos, mostrando o movimento posterior" width="1600" height="817" loading="lazy"></a><figcaption class="example-caption"><h3>Os níveis, no gráfico</h3><p>Registro de 23/11/2026, no gráfico de 15 minutos, com região marcada e alvos. É um exemplo histórico com o movimento posterior já visível, não uma entrada atual.</p></figcaption></figure>
+  <p class="fine">As imagens ilustram o formato das análises. Os dois prints do grupo e o gráfico acima são exemplos distintos.</p>
+  <div class="cta-row section-cta"><a href="#preco" class="btn btn-primary">Quero acompanhar a Sala BTC</a><a href="#antes-depois" class="btn btn-ghost">Ver antes e depois</a></div>
+</div></section>
+<section id="antes-depois"><div class="wrap">
+  <div class="eyebrow">Antes e depois</div><h2>A análise e o que aconteceu depois</h2>
+  <p class="section-lead">Comparações de leituras anteriores: cenário à esquerda, movimento posterior à direita. Toque nas imagens para ampliar.</p>
+  <div class="example-gallery"><figure class="example-card">
+            <a href="images/antes-depois/01-14set.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar comparação de antes e depois"><img src="images/antes-depois/01-14set.webp" alt="Antes e depois: análise de 14 Set · BTC/USD · 1h e o que o mercado fez em seguida" loading="lazy"></a>
+            <figcaption class="example-caption">
+              <span class="example-date">14 Set · BTC/USD · 1h</span>
+              <p class="what">Padrão de topo com região de short marcada acima do preço.</p>
+              <p class="lvl">Região: 77.988 – 78.704 · Invalidação: 79.877</p>
+            </figcaption>
+          </figure>
+<figure class="example-card">
+            <a href="images/antes-depois/02-22set.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar comparação de antes e depois"><img src="images/antes-depois/02-22set.webp" alt="Antes e depois: análise de 22 Set · BTC/USD · 1h e o que o mercado fez em seguida" loading="lazy"></a>
+            <figcaption class="example-caption">
+              <span class="example-date">22 Set · BTC/USD · 1h</span>
+              <p class="what">Região de long na correção da onda 2, com alvo na extensão de 161,8%.</p>
+              <p class="lvl">Região: 85.936 – 86.231 · Alvo: 87.960</p>
+            </figcaption>
+          </figure>
+<figure class="example-card">
+            <a href="images/antes-depois/03-24set.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar comparação de antes e depois"><img src="images/antes-depois/03-24set.webp" alt="Antes e depois: análise de 24 Set · BTC/USD · 2h e o que o mercado fez em seguida" loading="lazy"></a>
+            <figcaption class="example-caption">
+              <span class="example-date">24 Set · BTC/USD · 2h</span>
+              <p class="what">Região de short com três alvos mapeados e nível de invalidação do direcional de baixa.</p>
+              <p class="lvl">Região: 84.534 – 85.570 · Alvos: 82.273 e 80.688</p>
+            </figcaption>
+          </figure>
+<figure class="example-card">
+            <a href="images/antes-depois/04-28set-5m.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar comparação de antes e depois"><img src="images/antes-depois/04-28set-5m.webp" alt="Antes e depois: análise de 28 Set · BTC/USD · 5min e o que o mercado fez em seguida" loading="lazy"></a>
+            <figcaption class="example-caption">
+              <span class="example-date">28 Set · BTC/USD · 5min</span>
+              <p class="what">Padrão terminal finalizando — região de short no retorno.</p>
+              <p class="lvl">Região: 83.465 – 83.687 · Invalidação: 83.868</p>
+            </figcaption>
+          </figure>
+<figure class="example-card">
+            <a href="images/antes-depois/05-28set-1h.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar comparação de antes e depois"><img src="images/antes-depois/05-28set-1h.webp" alt="Antes e depois: análise de 28 Set · BTC/USDC · 1h e o que o mercado fez em seguida" loading="lazy"></a>
+            <figcaption class="example-caption">
+              <span class="example-date">28 Set · BTC/USDC · 1h</span>
+              <p class="what">Região de long com dois alvos e invalidação abaixo da extensão de 161,8%.</p>
+              <p class="lvl">Região: 82.434 – 82.920 · Alvos: 84.366 e 85.281</p>
+            </figcaption>
+          </figure></div>
+  <p class="fine">Estes são exemplos selecionados, não um levantamento de resultados da sala. As análises podem falhar; resultados passados não garantem resultados futuros.</p>
+</div></section>
 <section>
   <div class="wrap">
     <div class="eyebrow">Quem está do outro lado</div>
-    <h2>Não é só mais um perfil de cripto</h2>
+    <h2>Quem acompanha o mercado com você</h2>
     <div class="cred">
       <div class="id-card">
         <div class="id-eyebrow">Crachá · Sala BTC</div>
@@ -671,7 +649,7 @@
       </div>
       <div class="cred-text">
         <p><strong>Sou servidor público</strong> e estudo o mercado de Bitcoin há anos usando um método chamado Ondas de Elliott — hoje aprofundado pela abordagem NeoWave, que organiza o gráfico numa sequência lógica de movimentos.</p>
-        <p>Isso não é palpite. É leitura de padrão, a mesma lógica usada por analistas de mercado — só que traduzida pra quem nunca abriu um gráfico na vida.</p>
+        <p>Na sala, compartilho minha leitura do gráfico e o raciocínio por trás dos cenários. Você acompanha as regiões que observo e as mudanças na análise.</p>
         <p>Cada chamada que eu faço fica registrada com data. Você acompanha se ela se confirmou ou não — sem promessa, com histórico à vista.</p>
       </div>
     </div>
@@ -701,7 +679,7 @@
       </div>
       <div class="ledger-row">
         <span class="mark">—</span>
-        <div class="desc"><strong>Área de membros</strong><span>Videoaulas sobre trade, ferramentas e estratégias — e o conteúdo continua crescendo.</span></div>
+        <div class="desc"><strong>Área de membros</strong><span>Bônus: cursos e materiais do Taira Trading Lab na Hubla, incluídos na assinatura.</span></div>
       </div>
       <div class="ledger-row">
         <span class="mark">—</span>
@@ -711,122 +689,42 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Área de membros</div>
-    <h2>Além das leituras, você aprende a fazer</h2>
-    <p class="section-lead">Quem assina também ganha acesso à área de membros, com videoaulas sobre trade, ferramentas e estratégias — sem custo a mais. E é só o começo: novos módulos e aulas entram ao longo do tempo.</p>
-
-    <figure class="members-shot">
-      <img src="images/area-membros.webp" alt="Área de membros da Sala BTC: videoaula sobre stop com o gráfico de Bitcoin, e a lista de módulos e aulas ao lado" loading="lazy">
-      <figcaption>Print real da área de membros — módulos e aulas disponíveis hoje.</figcaption>
-    </figure>
+<section id="bonus"><div class="wrap">
+  <div class="eyebrow">Bônus incluídos · Hubla</div>
+  <h2>Quer entender o raciocínio? O material está incluído.</h2>
+  <p class="section-lead">Além da Sala BTC, sua assinatura dá acesso aos cursos e materiais disponíveis do Taira Trading Lab na Hubla. Você acompanha o mercado no grupo e aprofunda os estudos no seu ritmo.</p>
+  <div class="bonus-grid">
+    <article><h3>Cursos e videoaulas</h3><p>Conteúdos de trade, leitura gráfica e gestão de risco para apoiar seus estudos.</p></article>
+    <article><h3>Materiais e ferramentas</h3><p>Recursos complementares disponíveis na área de membros do Taira Trading Lab.</p></article>
   </div>
-</section>
+  <p class="fine">No checkout da Hubla, a assinatura aparece com o nome Taira Trading Lab e inclui a Sala BTC.</p>
+</div></section>
 
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Antes e depois</div>
-    <h2>Chamadas reais, lado a lado</h2>
-    <p class="section-lead">À esquerda, a análise no momento em que foi enviada. À direita, o que o mercado fez depois. Prints direto do gráfico, sem edição.</p>
 
-    <div class="ad-wrap">
-      <div class="ad-viewport">
-        <div class="ad-track" id="adTrack">
-        <div class="ad-slide">
-          <figure>
-            <img src="images/antes-depois/01-14set.webp" alt="Antes e depois: análise de 14 Set · BTC/USD · 1h e o que o mercado fez em seguida" loading="lazy">
-            <figcaption class="ad-cap">
-              <span class="when">14 Set · BTC/USD · 1h</span>
-              <p class="what">Padrão de topo com região de short marcada acima do preço.</p>
-              <p class="lvl">Região: 77.988 – 78.704 · Invalidação: 79.877</p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="ad-slide">
-          <figure>
-            <img src="images/antes-depois/02-22set.webp" alt="Antes e depois: análise de 22 Set · BTC/USD · 1h e o que o mercado fez em seguida" loading="lazy">
-            <figcaption class="ad-cap">
-              <span class="when">22 Set · BTC/USD · 1h</span>
-              <p class="what">Região de long na correção da onda 2, com alvo na extensão de 161,8%.</p>
-              <p class="lvl">Região: 85.936 – 86.231 · Alvo: 87.960</p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="ad-slide">
-          <figure>
-            <img src="images/antes-depois/03-24set.webp" alt="Antes e depois: análise de 24 Set · BTC/USD · 2h e o que o mercado fez em seguida" loading="lazy">
-            <figcaption class="ad-cap">
-              <span class="when">24 Set · BTC/USD · 2h</span>
-              <p class="what">Região de short com três alvos mapeados e nível de invalidação do direcional de baixa.</p>
-              <p class="lvl">Região: 84.534 – 85.570 · Alvos: 82.273 e 80.688</p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="ad-slide">
-          <figure>
-            <img src="images/antes-depois/04-28set-5m.webp" alt="Antes e depois: análise de 28 Set · BTC/USD · 5min e o que o mercado fez em seguida" loading="lazy">
-            <figcaption class="ad-cap">
-              <span class="when">28 Set · BTC/USD · 5min</span>
-              <p class="what">Padrão terminal finalizando — região de short no retorno.</p>
-              <p class="lvl">Região: 83.465 – 83.687 · Invalidação: 83.868</p>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="ad-slide">
-          <figure>
-            <img src="images/antes-depois/05-28set-1h.webp" alt="Antes e depois: análise de 28 Set · BTC/USDC · 1h e o que o mercado fez em seguida" loading="lazy">
-            <figcaption class="ad-cap">
-              <span class="when">28 Set · BTC/USDC · 1h</span>
-              <p class="what">Região de long com dois alvos e invalidação abaixo da extensão de 161,8%.</p>
-              <p class="lvl">Região: 82.434 – 82.920 · Alvos: 84.366 e 85.281</p>
-            </figcaption>
-          </figure>
-        </div>
-        </div>
-      </div>
-
-      <div class="ad-bar">
-        <div class="ad-dots" id="adDots"><button type="button" data-go="0" aria-label="Ir para a chamada 1" aria-current="true"></button><button type="button" data-go="1" aria-label="Ir para a chamada 2"></button><button type="button" data-go="2" aria-label="Ir para a chamada 3"></button><button type="button" data-go="3" aria-label="Ir para a chamada 4"></button><button type="button" data-go="4" aria-label="Ir para a chamada 5"></button></div>
-        <div class="ad-nav">
-          <span class="ad-count" id="adCount">1 / 5</span>
-          <button type="button" id="adPrev" aria-label="Chamada anterior" disabled>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
-          </button>
-          <button type="button" id="adNext" aria-label="Próxima chamada">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <p class="ad-note">São exemplos de chamadas enviadas na Sala — não são todas. Nem toda leitura acerta, e as que erram ficam registradas do mesmo jeito.</p>
-    </div>
-  </div>
-</section>
 
 <section id="preco">
   <div class="wrap">
     <div class="eyebrow">Assinatura</div>
     <h2>Um plano, sem pegadinha</h2>
-    <p class="section-lead">Menos de R$ 3,30 por dia, pra ter alguém acompanhando o mercado por você.</p>
+    <p class="section-lead">Sala BTC como acompanhamento principal. Cursos e materiais do Taira Trading Lab incluídos, em uma assinatura mensal.</p>
     <div class="price-card">
       <div class="plan-name">Sala BTC · Mensal</div>
-      <div class="amount"><sup>R$</sup>97<small>/mês</small></div>
+      <div class="amount"><sup>R$</sup>47<small>/mês</small></div>
       <ul>
         <li>Acesso ao grupo fechado no WhatsApp</li>
         <li>Duas análises por semana + avisos extras</li>
-        <li>Área de membros com videoaulas</li>
-        <li>Linguagem simples, sem jargão técnico</li>
+        <li>Bônus: cursos e materiais na Hubla</li>
+        <li>Comentários sobre os cenários e níveis do gráfico</li>
         <li>Cancele quando quiser, sem multa</li>
       </ul>
-      <a href="https://pay.cakto.com.br/3g3gi65_872224" class="btn btn-primary">Entrar na Sala BTC</a>
+      <a href="https://pay.hub.la/KpRMAcpPzFiyT6MypEtl" class="btn btn-primary">Entrar na Sala BTC</a>
     </div>
 
     <div class="post-purchase">
       <span class="eyebrow" style="margin-bottom:14px;">Depois de assinar</span>
       <ol class="pp-steps">
-        <li><span class="pp-num">1</span> Você paga pela Cakto, com cartão ou Pix.</li>
-        <li><span class="pp-num">2</span> Recebe por e-mail o link de convite pro grupo do WhatsApp.</li>
+        <li><span class="pp-num">1</span> Você assina pela Hubla, com as formas de pagamento disponíveis no checkout.</li>
+        <li><span class="pp-num">2</span> Acessa o Taira Trading Lab na Hubla e segue as orientações para entrar na Sala BTC.</li>
         <li><span class="pp-num">3</span> Entra no grupo — a entrada é aprovada por um admin, pra manter a sala só com assinantes.</li>
       </ol>
     </div>
@@ -842,7 +740,7 @@
     <div class="faq">
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Preciso saber ler gráfico? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Não. As análises são escritas em linguagem simples, pensadas pra quem nunca estudou análise técnica.</p></div>
+        <div class="faq-a"><p>Você pode acompanhar os comentários e os cenários sem dominar análise técnica. Os prints também trazem contagens e níveis; os cursos incluídos ajudam a entender a leitura e a gestão de risco.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">É garantia de lucro? <span class="plus">+</span></button>
@@ -854,7 +752,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Como funciona depois que eu pago? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Você recebe por e-mail o link de convite pro grupo do WhatsApp. A entrada é aprovada por um admin, pra manter a sala só com assinantes ativos — geralmente é rápido.</p></div>
+        <div class="faq-a"><p>Após a confirmação do pagamento, siga as orientações de acesso da Hubla para entrar na Sala BTC e acessar os cursos. Se precisar de ajuda, fale comigo pelo WhatsApp indicado nesta página.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Posso cancelar quando quiser? <span class="plus">+</span></button>
@@ -862,7 +760,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Funciona também pra quem já opera trade? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Funciona melhor pra quem pensa em comprar e manter no médio/longo prazo. Não é um serviço voltado pra operações rápidas ou alavancadas.</p></div>
+        <div class="faq-a"><p>Sim. A sala reúne leitura macro do Bitcoin e ideias de curto prazo, incluindo exemplos em gráficos de 5 e 15 minutos. Cada análise tem seu próprio horizonte. Não há entrada obrigatória a cada atualização nem execução automática de operações.</p></div>
       </div>
     </div>
   </div>
@@ -902,64 +800,6 @@
     });
   });
 
-  // ---------- Carrossel antes/depois ----------
-  (function(){
-    var track = document.getElementById('adTrack');
-    if(!track) return;
-    var slides = track.children.length;
-    var prev = document.getElementById('adPrev');
-    var next = document.getElementById('adNext');
-    var count = document.getElementById('adCount');
-    var dots = Array.prototype.slice.call(document.querySelectorAll('#adDots button'));
-    var i = 0;
-
-    function render(){
-      track.style.transform = 'translateX(' + (-i * 100) + '%)';
-      count.textContent = (i + 1) + ' / ' + slides;
-      prev.disabled = (i === 0);
-      next.disabled = (i === slides - 1);
-      dots.forEach(function(d, n){
-        if(n === i){ d.setAttribute('aria-current','true'); }
-        else { d.removeAttribute('aria-current'); }
-      });
-    }
-    function go(n){
-      i = Math.max(0, Math.min(slides - 1, n));
-      render();
-    }
-
-    prev.addEventListener('click', function(){ go(i - 1); });
-    next.addEventListener('click', function(){ go(i + 1); });
-    dots.forEach(function(d){
-      d.addEventListener('click', function(){ go(parseInt(d.dataset.go, 10)); });
-    });
-
-    // swipe no celular
-    var x0 = null, y0 = null, locked = false;
-    track.addEventListener('touchstart', function(e){
-      x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; locked = false;
-    }, {passive:true});
-    track.addEventListener('touchmove', function(e){
-      if(x0 === null) return;
-      var dx = e.touches[0].clientX - x0;
-      var dy = e.touches[0].clientY - y0;
-      if(!locked && Math.abs(dx) > Math.abs(dy) + 6){ locked = true; }
-    }, {passive:true});
-    track.addEventListener('touchend', function(e){
-      if(x0 === null) return;
-      var dx = e.changedTouches[0].clientX - x0;
-      if(locked && Math.abs(dx) > 45){ go(dx < 0 ? i + 1 : i - 1); }
-      x0 = null; y0 = null; locked = false;
-    }, {passive:true});
-
-    // setas do teclado
-    document.querySelector('.ad-wrap').addEventListener('keydown', function(e){
-      if(e.key === 'ArrowLeft'){ go(i - 1); }
-      if(e.key === 'ArrowRight'){ go(i + 1); }
-    });
-
-    render();
-  })();
 </script>
 
 </body>
