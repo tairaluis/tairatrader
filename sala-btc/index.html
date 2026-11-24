@@ -515,6 +515,10 @@
   .example-date{display:block;color:var(--gold);margin-bottom:8px;font-size:14px;}
   .example-caption .lvl{margin-top:8px;font-size:14px;}
   .example-gallery{display:grid;gap:24px;}
+  .comparison-before{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:0 20px 20px;}
+  .comparison-before figure{margin:0;min-width:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+  .comparison-before figcaption{padding:12px;font-size:14px;color:var(--text-dim);}
+  @media(max-width:600px){.comparison-before{grid-template-columns:1fr;padding-inline:16px;}}
   .chart-example,.section-cta{margin-top:28px;}
   .bonus-grid article{padding:24px;border:1px solid var(--line-strong);background:var(--ink-2);border-radius:12px;}
   .eyebrow,.stamp,.proto,.fine{font-size:14px;}
@@ -586,9 +590,17 @@
 </div></section>
 <section id="antes-depois"><div class="wrap">
   <div class="eyebrow">Antes e depois</div><h2>A análise e o que aconteceu depois</h2>
-  <p class="section-lead">Os níveis da análise e o movimento que veio depois. O primeiro exemplo reúne os dois momentos no mesmo gráfico; os demais trazem a comparação lado a lado. Toque nas imagens para ampliar.</p>
+  <p class="section-lead">A região de entrada e os alvos antes do movimento, seguidos do que o preço fez depois. Toque nas imagens para ampliar.</p>
   <div class="example-gallery">
-    <figure class="example-card"><a href="images/exemplo-btc-23nov.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar antes e depois de Bitcoin de 23 de novembro"><img src="images/exemplo-btc-23nov.png" alt="Antes e depois no mesmo gráfico BTCUSD de 15 minutos: região de entrada, invalidação e alvos marcados, com o movimento posterior visível em 23 de novembro de 2026" width="1600" height="817" loading="lazy"></a><figcaption class="example-caption"><span class="example-date">23 Nov 2026 · BTC/USD · 15min</span><h3>Antes e depois, no mesmo gráfico</h3><p>A região de entrada, a invalidação e os alvos marcados, junto do movimento de alta que veio depois. O gráfico permite comparar a ideia com o que o preço fez na sequência.</p></figcaption></figure>
+    <article class="example-card" aria-label="Antes e depois da análise de 23 de novembro de 2026">
+      <div class="example-caption"><span class="example-date">23 Nov 2026 · BTC/USD</span><h3>Antes: região de entrada e alvos definidos</h3><p>Dois registros anteriores ao movimento: o detalhe da região de long no gráfico de 1 minuto e os alvos projetados no gráfico de 15 minutos.</p></div>
+      <div class="comparison-before">
+        <figure><a href="images/antes-depois/23nov-antes-entrada-1m.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar antes: região de entrada no gráfico de um minuto"><img src="images/antes-depois/23nov-antes-entrada-1m.png" alt="Antes, 23 de novembro às 00h54 UTC-3: gráfico BTCUSD de um minuto com região de long e stop curto marcados" width="1600" height="817" loading="lazy"></a><figcaption>Antes · 00h54 (UTC−3) · 1min<br>Região de long e stop curto marcados.</figcaption></figure>
+        <figure><a href="images/antes-depois/23nov-antes-alvos-15m.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar antes: alvos no gráfico de quinze minutos"><img src="images/antes-depois/23nov-antes-alvos-15m.png" alt="Antes, 23 de novembro às 00h59 UTC-3: gráfico BTCUSD de quinze minutos com quatro alvos projetados antes da alta" width="1600" height="817" loading="lazy"></a><figcaption>Antes · 00h59 (UTC−3) · 15min<br>Alvos projetados para o movimento.</figcaption></figure>
+      </div>
+      <div class="example-caption"><h3>Depois: o movimento no gráfico</h3><p>Registro das 21h59 (UTC−3), no mesmo dia. O preço avançou pela região dos três primeiros alvos; o quarto alvo segue acima do movimento mostrado.</p></div>
+      <a href="images/exemplo-btc-23nov.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar depois: movimento de Bitcoin registrado às vinte e uma horas e cinquenta e nove minutos"><img src="images/exemplo-btc-23nov.png" alt="Depois, 23 de novembro às 21h59 UTC-3: gráfico BTCUSD de quinze minutos mostra a alta posterior em relação à região marcada e aos alvos projetados" width="1600" height="817" loading="lazy"></a>
+    </article>
     <figure class="example-card">
             <a href="images/antes-depois/01-14set.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar comparação de antes e depois"><img src="images/antes-depois/01-14set.webp" alt="Antes e depois: análise de 14 Set · BTC/USD · 1h e o que o mercado fez em seguida" width="1536" height="831" loading="lazy"></a>
             <figcaption class="example-caption">
